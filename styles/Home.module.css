@@ -1,5 +1,7 @@
 .container {
-  padding: 0 2rem;
+  padding: 0 0;
+  background-image: url('../staticFiles/background.png');
+  height: 100vh;
 }
 
 .main {
