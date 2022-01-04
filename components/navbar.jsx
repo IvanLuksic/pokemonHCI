@@ -33,7 +33,7 @@ export default function Navbar() {
             noWrap
             component="div"
             sx={{ mr: 1, display: { xs: 'none', md: 'flex' }, fontFamily: 'PokemonSolid' }}
-            color="primary"
+            color="secondary"
             className='pokeFont'
           >
             Team Rocket
@@ -70,7 +70,7 @@ export default function Navbar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center"  sx={{ fontFamily: 'PokemonSolid' }} color="secondary"
+                  <Typography textAlign="center"  sx={{ fontFamily: 'PokemonSolid' }} color="primary"
                     className='pokeFont'>{page}</Typography>
                 </MenuItem>
               ))}
@@ -81,7 +81,7 @@ export default function Navbar() {
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, fontFamily: 'PokemonSolid' }}
-            color="primary"
+            color="secondary"
           >
             Team Rocket
           </Typography>
@@ -91,7 +91,7 @@ export default function Navbar() {
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, display: 'block', fontFamily: 'PokemonSolid' }}
-                color="secondary"
+                color="primary"
                 className='pokeFont'
                 size='large'
              >
