@@ -3,6 +3,9 @@ import Grid from '@mui/material/Grid';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
 import FooterMeow from '../staticFiles/footerMeow.png'
+import Link from 'next/link';
+
+const pages = ['Home', 'Pokedex', 'Buy', 'Blog', 'About us', 'Login'];
 
 export default function Footer() {
     return (
@@ -22,13 +25,14 @@ export default function Footer() {
                 </Grid>
 
                 <Grid item xs={11} md={2} sx={{color: "white",textAlign: {md: "left", sm: "center", xs: "center"}}}>
-                    <ul style={{ fontSize: "1.15em", fontWeight: 700}}>
-                        <li>Home</li>
-                        <li>Pokedex</li>
-                        <li>Buy</li>
-                        <li>Blog</li>
-                        <li>About us</li>
-                        <li>Login</li>
+                    <ul style={{ fontSize: "1em", fontWeight: 700}}>
+                        {pages.map( page => (
+                        <li>
+                          <Link href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
+                            <a>{page}</a>    
+                          </Link>
+                        </li>
+                        ))}
                     </ul>
                 </Grid>
 

@@ -10,6 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import Link from 'next/link';
 
 const pages = ['Home', 'Pokedex', 'Buy', 'Blog', 'About us', 'Login'];
 
@@ -69,10 +70,12 @@ export default function Navbar() {
               }}
             >
               {pages.map((page) => (
+               <Link href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center"  sx={{ fontFamily: 'PokemonSolid' }} color="primary"
                     className='pokeFont'>{page}</Typography>
                 </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
@@ -87,6 +90,7 @@ export default function Navbar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },justifyContent:'flex-end' }}>
             {pages.map((page) => (
+              <Link href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -94,9 +98,10 @@ export default function Navbar() {
                 color="primary"
                 className='pokeFont'
                 size='large'
-             >
+                >
                 {page}
               </Button>
+              </Link>
             ))}
           </Box>
 
