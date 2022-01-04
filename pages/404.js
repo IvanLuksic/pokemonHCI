@@ -13,7 +13,7 @@ export default function Custom404() {
                 <Grid container spacing={3}  direction="column" justifyContent="center" alignItems="center" sx={{ height: '52.2vh'}}> 
                     
                     <Grid item sx={{textAlign: 'center'}}>
-                        <Image src={psyduck} style={{marginTop: '2em'}} height={200} width={200}></Image>
+                        <Image src={psyduck} style={{marginTop: '2em'}} height={200} width={200} alt="confusedPokemon"></Image>
 
                         <Typography color='primary' variant="h4" sx={{fontFamily: 'pokemonSolid', paddingBottom:'0.5em'}}> 
                           404 | Page not found

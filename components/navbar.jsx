@@ -70,8 +70,8 @@ export default function Navbar() {
               }}
             >
               {pages.map((page) => (
-               <Link href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+               <Link key={page} href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
+                <MenuItem  onClick={handleCloseNavMenu}>
                   <Typography textAlign="center"  sx={{ fontFamily: 'PokemonSolid' }} color="primary"
                     className='pokeFont'>{page}</Typography>
                 </MenuItem>
@@ -90,9 +90,8 @@ export default function Navbar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },justifyContent:'flex-end' }}>
             {pages.map((page) => (
-              <Link href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
+              <Link key={page} href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
               <Button
-                key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, display: 'block', fontFamily: 'PokemonSolid' }}
                 color="primary"

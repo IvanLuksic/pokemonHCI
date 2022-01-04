@@ -16,7 +16,7 @@ export default function Footer() {
                 </Grid>
 
                 <Grid item xs={10} md={4} style={{transform: "translateY(-5.15em)", textAlign: "right"}}>
-                    <Image src={FooterMeow} height={200} width={175} style={{right: 0}}/>
+                    <Image src={FooterMeow} height={200} width={175} style={{right: 0}} alt="Footer Meowth"/>
                 </Grid>
 
                 {/*Ovo je da se prikazuje na mobilnom ispod slike, da ne clippaju*/}
@@ -27,7 +27,7 @@ export default function Footer() {
                 <Grid item xs={11} md={2} sx={{color: "white",textAlign: {md: "left", sm: "center", xs: "center"}}}>
                     <ul style={{ fontSize: "1em", fontWeight: 700}}>
                         {pages.map( page => (
-                        <li>
+                        <li key={page}>
                           <Link href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
                             <a>{page}</a>    
                           </Link>
