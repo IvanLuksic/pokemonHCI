@@ -7,8 +7,10 @@ body {
 }
 
 @font-face {
-  font-family: 'PokemonSolid';
-  src: local('PokemonSolid'), url('../staticFiles/PokemonSolid.ttf') format('opentype');
+    font-family: "PokemonSolid";
+    src: local("PokemonSolid"),
+        url("../staticFiles/PokemonSolid.ttf") format("opentype");
+    font-display: swap;
 }
 
 a {
@@ -28,12 +30,11 @@ a {
 
 .container {
     background-image: url("../staticFiles/background.png");
-    
 }
 
 /*Minjanje bordera na tekstu*/
-.pokeFont{
-  -webkit-text-stroke-width: 0.0em;
-  -webkit-text-stroke-color: #5C76FE;
-  letter-spacing: 5px;
+.pokeFont {
+    -webkit-text-stroke-width: 0em;
+    -webkit-text-stroke-color: #5c76fe;
+    letter-spacing: 5px;
 }
