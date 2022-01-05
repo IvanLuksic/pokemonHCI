@@ -24,7 +24,7 @@ export default function Footer() {
                     <Typography color="white" variant="h5"> <b>Made by:</b> teamrocket@fesb.hr </Typography>
                 </Grid>
 
-                <Grid item xs={11} md={2} sx={{color: "white",textAlign: {md: "left", sm: "center", xs: "center"}}}>
+                <Grid item xs={4} md={2} sx={{color: "white"}}>
                     <ul style={{ fontSize: "1em", fontWeight: 700}}>
                         {pages.map( page => (
                         <li key={page}>

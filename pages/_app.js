@@ -2,6 +2,8 @@ import '../styles/globals.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
+import {useRouter} from 'next/router';
+import Head from 'next/head'
 
 // Kreiranje teme i wrappanje komponenti da su primary(TR plava) i secondary(TR žuta)
 // boje dostupni i primjenjeni u mui kroz cijeli projekt.
@@ -18,8 +20,14 @@ const theme = createTheme({
 });
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter()
+
   return ( 
             <ThemeProvider theme={theme}>
+               <Head>
+                  <title>{router.pathname.charAt(1).toUpperCase() + router.pathname.substring(2)} | Team Rocket</title>
+                  <meta property="og:title" content="My page title" key="title" />
+               </Head>
                <Navbar/>
                <Component {...pageProps}/>
                <Footer/>
