@@ -10,10 +10,10 @@ export default function PokeCardList({searchResult}) {
     console.log(pokemonCards)
     return (
         <Grid container direction="row" justifyContent="center" alignItems="center" sx={{width: '100%', mt: "2em",mb: "2em"}}>
-            {pokemonCards.map( ({id,name, img, type}) => (
+            {pokemonCards.map( ({id,name, type}) => (
                 <Link href={`/pokemon/${name}`} key={id} passHref>
                     <Grid item md={5} xs={11} sx={{margin: "0.5em", cursor:"pointer"}}>
-                        <PokedexCard name={name} imgUrl={img} type={type[0]} />
+                        <PokedexCard name={name} id={id} type={type[0]} />
                     </Grid>
                 </Link>
             ))}
