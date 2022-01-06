@@ -2,16 +2,17 @@ import { Grid, Autocomplete, TextField, Chip } from '@mui/material'
 import React, {useState, useEffect} from 'react'
 
 
-export default function Search({autocompleteList, setSearchResult, chipList}) {
+export default function Search({autocompleteList, setSearchResult, chipList, searchType}) {
 
     let [searchValue,setSearchValue] = useState("");
     let [chipValue,setChipValue] = useState("");
 
-    let chipsValues = Object.getOwnPropertyNames(chipList)
-
     useEffect(() => {
 
-        filter()
+        if(searchType == 'pokemon')
+            filterPokemon()
+        else    
+            filterBlog()    
 
         
      }, [chipValue,searchValue]);
@@ -30,11 +31,11 @@ export default function Search({autocompleteList, setSearchResult, chipList}) {
         
     }
 
-    function filter(){
+    function filterPokemon(){
 
         if(!searchValue && !chipValue){
             
-            setSearchResult(Array.from({length: 11}, () => Math.floor(Math.random() * 150)));
+            setSearchResult(Array.from({length: 11}, () => Math.floor(Math.random() * 150 + 1)));
         
         }else if(!searchValue && chipValue){
             
@@ -52,10 +53,16 @@ export default function Search({autocompleteList, setSearchResult, chipList}) {
 
     }
 
+    function filterBlog(){
+        //Ovde pisi filter za blog ili izmini gornji filter da radi za sve pa nek se zove samo filter 
+    }
+
+
     return (
-        <Grid container direction="row" justifyContent="center" alignItems="center" sx={{width: '100%', mt: "2em"}} >
+        <Grid container direction="row" justifyContent="center" alignItems="center" sx={{width: '100%', mt: "1em"}} >
            
             <Grid item md={11} xs={11}>
+                
                 <Autocomplete freeSolo
                     disableClearable
                     onChange={(event => setSearchValue(event.target.innerHTML))}
@@ -66,8 +73,9 @@ export default function Search({autocompleteList, setSearchResult, chipList}) {
             </Grid>
 
             <Grid item md={11} xs={11} sx={{width: '100%', mt: "2em"}} >
-                {chipsValues.map(value => 
-                    <Chip label={value} key={value} color={chipValue === value ? "primary" : 'default'} onClick={event => {chipClick(value)}} />
+                
+                {chipList.map(value => 
+                    <Chip label={value} key={value} color={chipValue === value ? "primary" : 'default'} onClick={() => chipClick(value)} />
                 )}
 
             </Grid>

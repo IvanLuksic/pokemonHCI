@@ -26,6 +26,9 @@ function MyApp({ Component, pageProps }) {
             <ThemeProvider theme={theme}>
                <Head>
                   <title>{router.pathname.charAt(1).toUpperCase() + router.pathname.substring(2)} | Team Rocket</title>
+                  <link rel="preconnect" href="https://fonts.googleapis.com" />
+                  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+                  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"></link>
                   <meta property="og:title" content="My page title" key="title" />
                </Head>
                <Navbar/>

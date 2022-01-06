@@ -3,8 +3,10 @@
     "Fire": "#FD4C5A",
     "Water": "#5472C2",
     "Bug": "#3B9950",
+    "Dark": "#5A5979",
     "Dragon": "#63C9D8",
     "Electric": "#C4C453",
+    "Fairy": "#EA1369",
     "Fighting": "#EF6138",
     "Flying": "#93B2C7",
     "Ghost": "#785D91",
@@ -13,5 +15,6 @@
     "Normal": "#C999A7",
     "Poison": "#9B69D9",
     "Psychic": "#F81C91",
-    "Rock": "#8B3E21"
+    "Rock": "#8B3E21",
+    "Steele": "#42BD94"
 }
