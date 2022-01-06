@@ -4,7 +4,7 @@ import ContentContainer from '../../components/contentContainer'
 import Search from '../../components/search'
 import PokeCardList from '../../modules/pokedex/pokeCardList'
 import PokemonList from '../../staticFiles/pokemonList.json'
-import AutocompleteList from '../../staticFiles/autocompletePokemonNames.json'
+import TypeToColorList from '../../staticFiles/correspondingTypeColor.json'
 
 export default function Pokedex() {
 
@@ -19,9 +19,9 @@ export default function Pokedex() {
             <ContentContainer>
                 <Grid container direction="row" justifyContent="center" alignItems="center"  sx={{width: "100%"}}>
                     <Grid item md={12} xs={11} >
-                        <Search autocompleteList={AutocompleteList} setSearchResult={setSearchResult}/>
+                        <Search autocompleteList={PokemonList} chipList={TypeToColorList} setSearchResult={setSearchResult}/>
                     </Grid>
-                    <Grid item md={12} xs={11} elevation={3}>
+                    <Grid item md={12} xs={11}>
                         <PokeCardList searchResult={searchResult}/>
                     </Grid>
                 </Grid>
