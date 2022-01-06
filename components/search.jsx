@@ -59,7 +59,7 @@ export default function Search({autocompleteList, setSearchResult, chipList, sea
 
 
     return (
-        <Grid container direction="row" justifyContent="center" alignItems="center" sx={{width: '100%', mt: "1em"}} >
+        <Grid container direction="row" justifyContent="center" alignItems="center" sx={{width: '100%', mt: "1em", textAlign: 'center'}} >
            
             <Grid item md={11} xs={11}>
                 
