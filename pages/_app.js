@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import Head from 'next/head'
 
 // Kreiranje teme i wrappanje komponenti da su primary(TR plava) i secondary(TR žuta)
@@ -16,26 +16,27 @@ const theme = createTheme({
     secondary: {
       main: "#FFCC03",
     },
-  },
+    lightLightGray: "#F5F5F5",
+  }
 });
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
 
-  return ( 
-            <ThemeProvider theme={theme}>
-               <Head>
-                  <title>{router.pathname.charAt(1).toUpperCase() + router.pathname.substring(2)} | Team Rocket</title>
-                  <link rel="preconnect" href="https://fonts.googleapis.com" />
-                  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-                  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"></link>
-                  <meta property="og:title" content="My page title" key="title" />
-               </Head>
-               <Navbar/>
-               <Component {...pageProps}/>
-               <Footer/>
-            </ThemeProvider>
-         )
+  return (
+    <ThemeProvider theme={theme}>
+      <Head>
+        <title>{router.pathname.charAt(1).toUpperCase() + router.pathname.substring(2)} | Team Rocket</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"></link>
+        <meta property="og:title" content="My page title" key="title" />
+      </Head>
+      <Navbar />
+      <Component {...pageProps} />
+      <Footer />
+    </ThemeProvider>
+  )
 }
 
 export default MyApp

@@ -1,11 +1,14 @@
-import { Button, Grid, Paper, Typography } from '@mui/material'
+import { Button, Grid, Paper, Typography, useTheme } from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
 
+
 export default function BlogCard({title, content, imgUrl, imgDescription, authorName}) {
 
+    const theme = useTheme()
+    
     return (
-        <Paper elevation={3} style={{ width: "100%", height: "100%", background: "lightgray" }}>
+        <Paper elevation={3} style={{ width: "100%", height: "100%", background: theme.palette.lightLightGray }}>
             <Grid container direction="row" sx={{ p: "2em"}}>
                 <Grid item xs={0} sm={3} sx={{ display: {xs: "none", sm: "flex"}, justifyContent: "center", alignIntems: "center"}}>
                     <Image src={imgUrl} width={"200%"} height={"200%"} alt={imgDescription} />
