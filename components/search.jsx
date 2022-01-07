@@ -2,7 +2,7 @@ import { Grid, Autocomplete, TextField, Chip } from '@mui/material'
 import React, {useState, useEffect} from 'react'
 
 
-export default function Search({autocompleteList, setSearchResult, chipList, searchType}) {
+export default function Search({autocompleteList, setSearchResult, chipList, searchType, searchPool}) {
 
     let [searchValue,setSearchValue] = useState("");
     let [chipValue,setChipValue] = useState("");
@@ -54,7 +54,29 @@ export default function Search({autocompleteList, setSearchResult, chipList, sea
     }
 
     function filterBlog(){
-        //Ovde pisi filter za blog ili izmini gornji filter da radi za sve pa nek se zove samo filter 
+
+        if(!searchValue){
+
+            setSearchResult(searchPool)
+
+        } else {
+
+            setSearchResult(
+
+                searchPool.filter(
+                    
+                    value => value.title.toUpperCase().includes(searchValue.toUpperCase())
+            
+                    || value.content.toUpperCase().includes(searchValue.toUpperCase())
+                
+                    || value.authorName.toUpperCase().includes(searchValue.toUpperCase())
+            
+                ).map(value => value)
+
+            );
+
+        }
+
     }
 
 
@@ -66,7 +88,7 @@ export default function Search({autocompleteList, setSearchResult, chipList, sea
                 <Autocomplete freeSolo
                     disableClearable
                     onChange={(event => setSearchValue(event.target.innerHTML))}
-                    options={autocompleteList.map(value => value.name)}
+                    options={autocompleteList != null ? autocompleteList.map(value => value.name) : []}
                     renderInput={(params) => <TextField  {...params} InputProps={{...params.InputProps, type: 'search'}} 
                     onChange={(event => setSearchValue(event.target.value))} fullWidth label="Search..." />}
                 />
@@ -74,9 +96,11 @@ export default function Search({autocompleteList, setSearchResult, chipList, sea
 
             <Grid item md={11} xs={11} sx={{width: '100%', mt: "2em"}} >
                 
-                {chipList.map(value => 
-                    <Chip label={value} key={value} color={chipValue === value ? "primary" : 'default'} onClick={() => chipClick(value)} />
-                )}
+                {chipList != null ? (
+                    chipList.map(value => 
+                        <Chip label={value} key={value} color={chipValue === value ? "primary" : 'default'} onClick={() => chipClick(value)} />
+                    ))
+                    : null}
 
             </Grid>
         </Grid>
