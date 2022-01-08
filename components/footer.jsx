@@ -20,16 +20,16 @@ export default function Footer() {
                 </Grid>
 
                 {/*Ovo je da se prikazuje na mobilnom ispod slike, da ne clippaju*/}
-                <Grid item xs={11} md={4} sx={{ display: { md: 'none', sm: 'block' }, textAlign: "center" }}>
+                <Grid item xs={11} md={4} sx={{ display: { md: 'none', sm: 'block' }, transform: "translateY(-2.5em)", textAlign: "center" }}>
                     <Typography color="white" variant="h5"> <b>Made by:</b> teamrocket@fesb.hr </Typography>
                 </Grid>
 
-                <Grid item xs={4} md={2} sx={{color: "white"}}>
-                    <ul style={{ fontSize: "1em", fontWeight: 700}}>
+                <Grid item xs={4} md={2} sx={{color: "white", fontSize: {md:"1em",sm: "1.25em", xs: "1.25em"}, transform: {md: "none",sm: "translateY(-1.5em)",xs: "translateY(-1.5em)"}}}>
+                    <ul style={{ fontWeight: 700}}>
                         {pages.map( page => (
-                        <li key={page}>
+                        <li key={page} style={{cursor: "pointer"}}>
                           <Link href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
-                            <a>{page}</a>    
+                                {page}  
                           </Link>
                         </li>
                         ))}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Paper, Typography, Button } from '@mui/material'
+import { Grid, Paper, Typography, Button, Box } from '@mui/material'
 import Image from 'next/image'
 import SpeechBubble from '../../staticFiles/speechBubble.svg'
 
@@ -17,7 +17,9 @@ export default function BuyCard({name, id, type, price, isLogged}) {
                 </Grid>
                 <Grid item xs={5} style={{textAlign: "center"}}>
                     <div style={{transform: 'translateY(1em)'}}><Image src={SpeechBubble} width={150} height={100} /></div>
-                    <div style={{transform: 'translateY(-3.5em) translateX(-0.5em)'}}><Typography variant="h6" sx={{fontWeight: 600}}>{price}</Typography></div>
+                    <Box sx={{transform: {lg: 'translateY(-3.75em) translateX(-0.5em)',sm: 'translateY(-3.5em) translateX(-0.5em)', xs: 'translateY(-3.5em) translateX(-0.5em)'}}}>
+                        <Typography variant="h6" sx={{fontWeight: 600}}>{price}</Typography>
+                        </Box>
                 </Grid>
                 <Grid item xs={12}>
                     <Button variant="outlined" color='primary' disabled={!isLogged} size="large" sx={{width: '100%', borderRadius: 0, borderColor: 'primary.main',transform: 'scale(1.01)'}}>Buy</Button>

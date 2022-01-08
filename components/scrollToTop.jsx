@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Zoom from '@mui/material/Zoom';
+import { Tooltip } from '@mui/material';
 
 export default function ScrollToTop() {
 
@@ -29,9 +30,11 @@ export default function ScrollToTop() {
         role="presentation"
         sx={{ position: 'fixed', bottom: 16, right: 16, zIndex: 1000 }}
       >
+        <Tooltip title="Scroll to top" placement="left">
             <Fab color="secondary" size="small" aria-label="scroll back to top">
                   <KeyboardArrowUpIcon />
             </Fab>
+        </Tooltip>
       </Box>
     </Zoom>
   );
