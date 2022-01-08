@@ -2,7 +2,7 @@ import { Grid, Typography } from '@mui/material'
 import React, {useState} from 'react'
 import ContentContainer from '../../components/contentContainer'
 import Search from '../../components/search'
-import PokeCardList from '../../modules/pokedex/pokeCardList'
+import PokeCardList from '../../components/pokeCardList'
 import PokemonList from '../../staticFiles/pokemonList.json'
 import TypeToColorList from '../../staticFiles/correspondingTypeColor.json'
 import PageHeading from '../../components/pageHeading'
@@ -23,7 +23,7 @@ export default function Pokedex() {
                         <Search autocompleteList={PokemonList} searchType='pokemon' chipList={Object.getOwnPropertyNames(TypeToColorList)} setSearchResult={setSearchResult}/>
                     </Grid>
                     <Grid item md={12} xs={11}>
-                        <PokeCardList searchResult={searchResult}/>
+                        <PokeCardList searchResult={searchResult} isPokedex={true}/>
                     </Grid>
                 </Grid>
             </ContentContainer>
