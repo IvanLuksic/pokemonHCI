@@ -29,11 +29,8 @@ export default function BlogCard({title, content, imgUrl, imgDescription, author
                     <Grid item xs={1} sx={{width:"100%", aspectRatio: "1", justifyContent: "flex-start", alignIntems: "flex-end"}}>
                         <AuthorImage authorImgUrl={authorImgUrl} authorName={authorName}/>
                     </Grid>
-                    <Grid item xs={1} sx={{display: "flex", width: "100%", justifyContent: "center", alignIntems: "center", pb: "2em"}}>
+                    <Grid item xs={1} sx={{display: "flex", width: "100%", justifyContent: "center", alignIntems: "center", pt: "1em"}}>
                         <Typography>by: {authorName}</Typography>
-                    </Grid>
-                    <Grid item xs={1} sx={{display: "flex", width: "100%", justifyContent: "flex-end", alignIntems: "flex-end"}}>
-                        <Button variant="contained" style={{width: "100%"}}>Read more...</Button>
                     </Grid>
                 </Grid>
             </Grid>

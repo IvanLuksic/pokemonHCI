@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import ContentContainer from '../../components/contentContainer'
 import Search from '../../components/search'
 import PageHeading from '../../components/pageHeading'
-import BlogCardList from '../../modules/blog/blogCardList'
+import BlogCardList from '../../components/blogCardList'
 import blogCardsMock from '../../staticFiles/blogCardsMock.json'
 
 
