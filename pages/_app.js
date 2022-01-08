@@ -4,6 +4,7 @@ import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import {useRouter} from 'next/router';
 import Head from 'next/head'
+import ScrollToTop from '../components/scrollToTop'
 
 // Kreiranje teme i wrappanje komponenti da su primary(TR plava) i secondary(TR žuta)
 // boje dostupni i primjenjeni u mui kroz cijeli projekt.
@@ -34,6 +35,9 @@ function MyApp({ Component, pageProps }) {
                <Navbar/>
                <Component {...pageProps}/>
                <Footer/>
+
+               <ScrollToTop />
+
             </ThemeProvider>
          )
 }
