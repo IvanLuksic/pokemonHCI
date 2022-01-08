@@ -38,3 +38,7 @@ a {
     -webkit-text-stroke-color: #5c76fe;
     letter-spacing: 5px;
 }
+
+.speechBubble {
+    background-image: url("../staticFiles/speechBubble.png");
+}
