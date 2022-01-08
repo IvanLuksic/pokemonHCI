@@ -1,9 +1,10 @@
 import { Button, Grid, Paper, Typography, useTheme } from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
+import AuthorImage from '../author/authorImage'
 
 
-export default function BlogCard({title, content, imgUrl, imgDescription, authorName}) {
+export default function BlogCard({title, content, imgUrl, imgDescription, authorName, authorImgUrl}) {
 
     const theme = useTheme()
     
@@ -24,9 +25,12 @@ export default function BlogCard({title, content, imgUrl, imgDescription, author
                         <Button variant="contained">Read more...</Button>
                     </Grid>
                 </Grid>
-                <Grid container item direction="column" columns={12} xs={0} md={2} sx={{ display: {xs: "none", md: "flex"}, pl: "2em"}}>
-                    <Grid item xs={1} sx={{display: "flex", width: "100%", justifyContent: "flex-end", alignIntems: "flex-end", mb: "1em"}}>
-                        <div style={{height: 150, width: "100%", backgroundColor: "yellow"}}>{authorName}</div>
+                <Grid container item direction="column" columns={12} xs={0} md={2} sx={{ display: {xs: "none", md: "inline"}, pl: "1em"}}>
+                    <Grid item xs={1} sx={{width:"100%", aspectRatio: "1", justifyContent: "flex-start", alignIntems: "flex-end"}}>
+                        <AuthorImage authorImgUrl={authorImgUrl} authorName={authorName}/>
+                    </Grid>
+                    <Grid item xs={1} sx={{display: "flex", width: "100%", justifyContent: "center", alignIntems: "center", pb: "2em"}}>
+                        <Typography>by: {authorName}</Typography>
                     </Grid>
                     <Grid item xs={1} sx={{display: "flex", width: "100%", justifyContent: "flex-end", alignIntems: "flex-end"}}>
                         <Button variant="contained" style={{width: "100%"}}>Read more...</Button>
