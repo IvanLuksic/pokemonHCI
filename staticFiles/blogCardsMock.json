@@ -1,0 +1,59 @@
+[
+    {
+    "title": "Greatest of all times",
+    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg",
+    "imgDesciption": "Bulbasaur",
+    "authorName": "James",
+    "authorImgUrl": "https://raw.githubusercontent.com/DSrhoj/resources/master/james2.png"
+    }, 
+    {
+    "title": "Biggest fails",
+    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/2.svg",
+    "imgDesciption": "Bulbasaur",
+    "authorName": "Jessie",
+    "authorImgUrl": "https://raw.githubusercontent.com/DSrhoj/resources/master/jessie2.png"
+    },
+    {
+    "title": "My pokemon project",
+    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/3.svg",
+    "imgDesciption": "Bulbasaur",
+    "authorName": "James",
+    "authorImgUrl": "https://raw.githubusercontent.com/DSrhoj/resources/master/james2.png"
+    },
+    {
+    "title": "Pokemon presentation night",
+    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/11.svg",
+    "imgDesciption": "Bulbasaur",
+    "authorName": "Jessie",
+    "authorImgUrl": "https://raw.githubusercontent.com/DSrhoj/resources/master/jessie2.png"
+    },
+    {
+    "title": "Different title with longer text, or should i say very long",
+    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/19.svg",
+    "imgDesciption": "Bulbasaur",
+    "authorName": "James",
+    "authorImgUrl": "https://raw.githubusercontent.com/DSrhoj/resources/master/james2.png"
+    },
+    {
+    "title": "Why you scrolling this much?",
+    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/121.svg",
+    "imgDesciption": "Bulbasaur",
+    "authorName": "Jessie",
+    "authorImgUrl": "https://raw.githubusercontent.com/DSrhoj/resources/master/jessie2.png"
+    },
+    {
+    "title": "Finally, you reached the bottom",
+    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+    "imgUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/21.svg",
+    "imgDesciption": "Bulbasaur",
+    "authorName": "Jessie",
+    "authorImgUrl": "https://raw.githubusercontent.com/DSrhoj/resources/master/jessie2.png"
+    }
+
+]

@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import Head from 'next/head'
 import ScrollToTop from '../components/scrollToTop'
 
@@ -17,7 +17,8 @@ const theme = createTheme({
     secondary: {
       main: "#FFCC03",
     },
-  },
+    lightLightGray: "#F5F5F5",
+  }
 });
 
 function MyApp({ Component, pageProps }) {
