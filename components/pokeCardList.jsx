@@ -5,7 +5,8 @@ import PokemonList from '../staticFiles/pokemonList.json'
 import PokedexCard from '../modules/pokedex/pokedexCard'
 import BuyCard from '../modules/store/buyCard'
 
-export default function PokeCardList({searchResult, isPokedex}) {
+export default function PokeCardList({searchResult, isPokedex, setCartItems}) {
+
 
     return (
         <Grid container direction="row" justifyContent="center" alignItems="center" sx={{width: '100%', mt: "2em",mb: "2em"}}>
@@ -17,7 +18,7 @@ export default function PokeCardList({searchResult, isPokedex}) {
                         </Grid>
                     </Link>) :
                 (<Grid item md={5} xs={11} sx={{margin: "0.5em"}} key={Math.random()}>
-                    <BuyCard name={name} id={id} type={type[0]} price={Math.round(Math.random()*150+1)+'.00€'} isLogged={true}/>
+                    <BuyCard name={name} id={id} type={type[0]} setCartItems={setCartItems} price={Math.round(Math.random()*150+1)+'.00€'} isLogged={true}/>
                  </Grid>)
             ))}
         </Grid>
