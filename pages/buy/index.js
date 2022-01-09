@@ -38,7 +38,7 @@ export default function Buy() {
                         <PokeCardList searchResult={searchResult} isPokedex={false} setCartItems={setCartItems}/>
                     </Grid>
                     {cartItems.length ? <Cart cartItems={cartItems} setCartItems={setCartItems}/>: null}
-                    {cartItems.length ? <MobileCart cartItems={cartItems} setCartItems={setCartItems}/> : null}
+                    {cartItems.length  ? <MobileCart cartItems={cartItems} setCartItems={setCartItems}/> : null}
                 </Grid>
                 
             </ContentContainer>

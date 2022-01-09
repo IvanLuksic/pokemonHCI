@@ -4,7 +4,7 @@ import React from 'react'
 import ClearIcon from '@mui/icons-material/Clear';
 
 
-export default function CartItem({name, id, price , setHandleDelete}) {
+export default function CartItem({name, id, price, size , setHandleDelete}) {
 
     
 
@@ -15,7 +15,7 @@ export default function CartItem({name, id, price , setHandleDelete}) {
 
                     <Grid item xs={2}>
 
-                         <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`} width={40} height={40} alt={name}/>
+                         <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`} width={size} height={size} alt={name}/>
 
                     </Grid>
 

@@ -21,7 +21,7 @@ export default function Cart({cartItems, setCartItems}) {
                     <Typography color="primary" variant='h6' sx={{fontWeight: 600}}> My cart </Typography>
                     </Grid>
 
-                    {cartItems.map(item => <CartItem id={item.id} name={item.name} key={item.id} price={item.price} setHandleDelete={setHandleDelete}/>)}
+                    {cartItems.map(item => <CartItem id={item.id} name={item.name} key={Math.random()} size={40} price={item.price} setHandleDelete={setHandleDelete}/>)}
                     <Grid item xs={12} mt="0.75em">
                         <Divider  variant="middle"></Divider>
                     </Grid>
