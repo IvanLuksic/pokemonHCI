@@ -86,11 +86,12 @@ export default function Search({autocompleteList, setSearchResult, chipList, sea
             <Grid item md={11} xs={11}>
                 
                 <Autocomplete freeSolo
-                    disableClearable
-                    onChange={(event => setSearchValue(event.target.innerHTML))}
+                    onChange={(event, newValue) => {
+                        setSearchValue(newValue);
+                      }}
                     options={autocompleteList != null ? autocompleteList.map(value => value.name) : []}
-                    renderInput={(params) => <TextField  {...params} InputProps={{...params.InputProps, type: 'search'}} 
-                    onChange={(event => setSearchValue(event.target.value))} fullWidth label="Search..." />}
+                    renderInput={(params) => <TextField {...params}
+                    fullWidth label="Search..." />}
                 />
             </Grid>
 

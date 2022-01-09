@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import Link from 'next/link';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -25,6 +26,7 @@ export default function Navbar() {
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
+  const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -112,8 +114,9 @@ export default function Navbar() {
 
 
           {/*Mobile drawer menu*/}  
-          <Drawer
+          <SwipeableDrawer
           variant="temporary"
+          disableBackdropTransition={!iOS} disableDiscovery={iOS}
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
@@ -121,7 +124,7 @@ export default function Navbar() {
           }}
           sx={{ display: { xs: 'block', sm: 'none' }, '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }, }}>
             {drawer}
-          </Drawer>
+          </SwipeableDrawer>
          
         </Toolbar>
       </Container>
