@@ -7,6 +7,7 @@ import PokemonList from '../../staticFiles/pokemonList.json'
 import TypeToColorList from '../../staticFiles/correspondingTypeColor.json'
 import PageHeading from '../../components/pageHeading'
 import Cart from '../../modules/store/cart'
+import MobileCart from '../../modules/store/mobileCart'
 
 export default function Buy() {
 
@@ -37,6 +38,7 @@ export default function Buy() {
                         <PokeCardList searchResult={searchResult} isPokedex={false} setCartItems={setCartItems}/>
                     </Grid>
                     {cartItems.length ? <Cart cartItems={cartItems} setCartItems={setCartItems}/>: null}
+                    {cartItems.length ? <MobileCart cartItems={cartItems} setCartItems={setCartItems}/> : null}
                 </Grid>
                 
             </ContentContainer>
