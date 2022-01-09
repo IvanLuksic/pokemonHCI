@@ -8,7 +8,7 @@ import AuthorImage from '../author/authorImage'
 export default function BlogCard({title, content, imgUrl, imgDescription, authorName, authorImgUrl}) {
 
     const theme = useTheme()
-    
+
     return (
         <Paper elevation={3} style={{ width: "100%", height: "100%", background: theme.palette.lightLightGray }}>
             <Grid container direction="row" sx={{ p: "2em"}}>
@@ -18,9 +18,7 @@ export default function BlogCard({title, content, imgUrl, imgDescription, author
                 <Grid container item direction="column" xs={12} sm={9} md={7} sx={{ pl: { xs: "0em", sm: "2em" } }}>
                     <Grid item xs md={1} sx={{ height: "100%", width: "100%", pb: "0.5em", pr: "1em" }}>
                         <Link href={`/blog/${title}`} key={Math.random()} passHref>
-                            <a>
-                                <Typography variant="h4" sx={{ fontWeight: 600, textAlign: "left"}}>{title}</Typography>
-                            </a>
+                            <Typography variant="h4" sx={{ fontWeight: 600, textAlign: "left", cursor: "pointer"}}>{title}</Typography>
                         </Link>
                     </Grid>
                     <Grid item xs md={1} sx={{ height: "100%", width: "100%", pb: { xs: "0.5em", md: "0em" } }}>
