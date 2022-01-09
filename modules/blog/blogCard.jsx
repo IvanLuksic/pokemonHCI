@@ -1,5 +1,6 @@
 import { Button, Grid, Paper, Typography, useTheme } from '@mui/material'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import AuthorImage from '../author/authorImage'
 
@@ -16,7 +17,11 @@ export default function BlogCard({title, content, imgUrl, imgDescription, author
                 </Grid>
                 <Grid container item direction="column" xs={12} sm={9} md={7} sx={{ pl: { xs: "0em", sm: "2em" } }}>
                     <Grid item xs md={1} sx={{ height: "100%", width: "100%", pb: "0.5em", pr: "1em" }}>
-                        <Typography variant="h4" sx={{ fontWeight: 600, textAlign: "left"}}>{title}</Typography>
+                        <Link href={`/blog/${title}`} key={Math.random()} passHref>
+                            <a>
+                                <Typography variant="h4" sx={{ fontWeight: 600, textAlign: "left"}}>{title}</Typography>
+                            </a>
+                        </Link>
                     </Grid>
                     <Grid item xs md={1} sx={{ height: "100%", width: "100%", pb: { xs: "0.5em", md: "0em" } }}>
                         <Typography variant="h6" sx={{ fontWeight: 100}}>{content}</Typography>
@@ -27,13 +32,19 @@ export default function BlogCard({title, content, imgUrl, imgDescription, author
                 </Grid>
                 <Grid container item direction="column" xs={0} md={2} sx={{ [theme.breakpoints.down('md')]: { display: "none" }, [theme.breakpoints.up('md')]: { display: "flex" }, pl: "1em"}}>
                     <Grid item md sx={{ width:"100%", aspectRatio: "1" }}>
-                        <AuthorImage authorImgUrl={authorImgUrl} authorName={authorName}/>
+                    <Link href={`/aboutUs`} key={Math.random()} passHref>
+                            <a>
+                                <AuthorImage authorImgUrl={authorImgUrl} authorName={authorName}/>
+                            </a>
+                        </Link>
                     </Grid>
                     <Grid item md sx={{ height: "100%", width: "100%", textAlign: "center", pt: "0.25em", pb: "1em" }}>
                         <Typography>by: {authorName}</Typography>
                     </Grid>
                     <Grid item md sx={{ display: "flex", alignItems: "flex-end"}}>
-                        <Button variant="contained" sx={{ minWidth: "100%" }}>Read more...</Button>
+                        <Link href={`/blog/${title}`} key={Math.random()} passHref>
+                            <Button variant="contained" sx={{ minWidth: "100%" }}>Read more...</Button>
+                        </Link>
                     </Grid>
                 </Grid>
             </Grid>
