@@ -1,5 +1,5 @@
 import { Grid, Paper, Typography, Divider, Button } from '@mui/material'
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import CartItem from './cartItem'
 
 export default function Cart({cartItems, setCartItems}) {

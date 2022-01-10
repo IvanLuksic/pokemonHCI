@@ -6,16 +6,14 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import { Tooltip } from '@mui/material';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
 import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-
+import menuContext from "./context";
 
 
 const drawerWidth = 240;
@@ -24,11 +22,14 @@ const pages = ['Home', 'Pokedex', 'Buy', 'Blog', 'About us', 'Login'];
 
 export default function Navbar() {
 
+
+  const { setMenuOpen } = React.useContext(menuContext);
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+    setMenuOpen(!mobileOpen);
   };
 
   const drawer = (
@@ -118,6 +119,7 @@ export default function Navbar() {
           variant="temporary"
           disableBackdropTransition={!iOS} disableDiscovery={iOS}
           open={mobileOpen}
+          onOpen={handleDrawerToggle}
           onClose={handleDrawerToggle}
           ModalProps={{
             keepMounted: true,

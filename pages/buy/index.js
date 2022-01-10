@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useContext } from 'react'
 import ContentContainer from '../../components/contentContainer'
 import Search from '../../components/search'
 import PokeCardList from '../../components/pokeCardList'
@@ -8,18 +8,13 @@ import TypeToColorList from '../../staticFiles/correspondingTypeColor.json'
 import PageHeading from '../../components/pageHeading'
 import Cart from '../../modules/store/cart'
 import MobileCart from '../../modules/store/mobileCart'
+import menuContext from '../../components/context';
+
 
 export default function Buy() {
 
+    const { menuOpen } = useContext(menuContext);
     let [cartItems, setCartItems] = useState([]);
-    let isCart = false
-
-    useEffect(() => {
-        if(cartItems.length > 0){
-            isCart = true
-        }
-
-    }, [cartItems])
 
     let [searchResult, setSearchResult] = useState(Array.from({ length: 11 }, () => Math.floor((Math.random() * 150) + 1)));
     /*console.log(new Array(11).fill().map((a, i) => a = i).sort(() => Math.random() - 0.5));
@@ -38,7 +33,7 @@ export default function Buy() {
                         <PokeCardList searchResult={searchResult} isPokedex={false} setCartItems={setCartItems}/>
                     </Grid>
                     {cartItems.length ? <Cart cartItems={cartItems} setCartItems={setCartItems}/>: null}
-                    {cartItems.length  ? <MobileCart cartItems={cartItems} setCartItems={setCartItems}/> : null}
+                    {cartItems.length && !menuOpen ? <MobileCart cartItems={cartItems} setCartItems={setCartItems}/> : null}
                 </Grid>
                 
             </ContentContainer>

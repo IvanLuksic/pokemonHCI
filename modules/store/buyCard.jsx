@@ -22,7 +22,7 @@ export default function BuyCard({name, id, type, price, isLogged, setCartItems})
                         </Box>
                 </Grid>
                 <Grid item xs={12}>
-                    <Button variant="outlined" onClick={()=> setCartItems(old=> [...old,{name: name, id: id, price: price}])} color='primary' disabled={!isLogged} size="large" sx={{width: '100%', borderRadius: 0, borderColor: 'primary.main',transform: 'scale(1.01)'}}>Buy</Button>
+                    <Button variant="outlined" onClick={()=> setCartItems(old=> [...old,{name: name, id: id, price: price}])} color='primary' disabled={!isLogged} size="large" sx={{width: '100%', borderRadius: 0, borderColor: 'primary.main',transform: 'scale(1.01)'}}>{isLogged ? 'Buy' : 'Login to buy'}</Button>
                 </Grid>
             </Grid>
         </Paper>
