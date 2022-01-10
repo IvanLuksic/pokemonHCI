@@ -29,7 +29,7 @@ export default function Navbar() {
   const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
-    setMenuOpen(!mobileOpen);
+    mobileOpen ? setTimeout(() => {setMenuOpen(!mobileOpen)}, 10) : setMenuOpen(!mobileOpen);
   };
 
   const drawer = (

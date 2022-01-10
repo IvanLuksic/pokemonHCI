@@ -1,14 +1,11 @@
-import { Grid, Paper, Typography, Divider, Button } from '@mui/material'
-import React, {useState, useEffect} from 'react'
+import { Grid, Typography, Divider, Button } from '@mui/material'
+import React, {useState, useEffect, useContext} from 'react'
 import CartItem from './cartItem'
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { Global } from '@emotion/react';
 import { styled } from '@mui/material/styles';
-
-import { grey } from '@mui/material/colors';
 import Box from '@mui/material/Box';
-import Skeleton from '@mui/material/Skeleton';
-
+import menuContext from '../../components/context';
 const drawerBleeding = 56;
 
 const StyledBox = styled(Box)(({ theme }) => ({
@@ -28,6 +25,8 @@ const Puller = styled(Box)(({ theme }) => ({
 
 export default function MobileCart({cartItems, setCartItems}) {
 
+    const { menuOpen } = useContext(menuContext);
+
     let [handleDelete, setHandleDelete] = useState(null);
     useEffect(() => {
         setCartItems((old)=> (old.filter(item => item.id != handleDelete)))
@@ -41,7 +40,7 @@ export default function MobileCart({cartItems, setCartItems}) {
 
     return (
         <Grid item xs={12}>
-
+{ !menuOpen ? 
             <Global
                     styles={{
                     '.MuiDrawer-root > .MuiPaper-root': {
@@ -51,7 +50,7 @@ export default function MobileCart({cartItems, setCartItems}) {
                     }}
                 />
 
-
+    : null}
     <SwipeableDrawer
         anchor="bottom"
         open={open}
@@ -103,7 +102,7 @@ export default function MobileCart({cartItems, setCartItems}) {
                     </Grid>
                  </Grid>
             </StyledBox>
-      </SwipeableDrawer>
+      </SwipeableDrawer> 
 
         </Grid>
     )
