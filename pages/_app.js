@@ -5,7 +5,7 @@ import Footer from '../components/footer';
 import { useRouter } from 'next/router';
 import Head from 'next/head'
 import ScrollToTop from '../components/scrollToTop'
-import menuContext from '../components/context';
+import {menuContext, cartContext} from '../components/context';
 import React, {useState} from 'react'
 // Kreiranje teme i wrappanje komponenti da su primary(TR plava) i secondary(TR žuta)
 // boje dostupni i primjenjeni u mui kroz cijeli projekt.
@@ -25,6 +25,7 @@ const theme = createTheme({
 
 function MyApp({ Component, pageProps }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
   const router = useRouter()
 
   return ( 
@@ -38,8 +39,10 @@ function MyApp({ Component, pageProps }) {
                </Head>
                
                <menuContext.Provider value={{ menuOpen, setMenuOpen }}>
-                <Navbar/>
-                <Component {...pageProps}/>
+                  <Navbar/>
+                  <cartContext.Provider value={{cartItems, setCartItems}}>
+                    <Component {...pageProps}/>
+                  </cartContext.Provider>
                </menuContext.Provider>
                <Footer/>
 

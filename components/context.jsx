@@ -5,4 +5,9 @@ const menuContext = createContext({
   setMenuOpen: (menu) => {}
 });
 
-export default menuContext;
+const cartContext = createContext({
+    cartItems: [],
+    setCartItems: (item) => {}
+  });
+
+export {menuContext, cartContext};

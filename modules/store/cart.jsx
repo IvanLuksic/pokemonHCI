@@ -3,7 +3,7 @@ import React, {useState, useEffect, useContext} from 'react'
 import CartItem from './cartItem'
 
 export default function Cart({cartItems, setCartItems}) {
-
+    
     let [handleDelete, setHandleDelete] = useState(null);
     useEffect(() => {
         setCartItems((old)=> (old.filter(item => item.id != handleDelete)))

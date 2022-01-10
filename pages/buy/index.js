@@ -8,10 +8,18 @@ import TypeToColorList from '../../staticFiles/correspondingTypeColor.json'
 import PageHeading from '../../components/pageHeading'
 import Cart from '../../modules/store/cart'
 import MobileCart from '../../modules/store/mobileCart'
+import { cartContext } from '../../components/context'
 
 export default function Buy() {
 
-    let [cartItems, setCartItems] = useState([]);
+    const { cartItems, setCartItems } = useContext(cartContext);
+
+    let [cartItemsB, setCartItemsB] = useState(cartItems);
+
+    useEffect(() => {
+        setCartItems(cartItemsB)
+    }, [cartItemsB])
+
     let [searchResult, setSearchResult] = useState(Array.from({ length: 11 }, () => Math.floor((Math.random() * 150) + 1)));
     /*console.log(new Array(11).fill().map((a, i) => a = i).sort(() => Math.random() - 0.5));
 
@@ -26,10 +34,10 @@ export default function Buy() {
                         <Search autocompleteList={PokemonList} searchType='pokemon' chipList={Object.getOwnPropertyNames(TypeToColorList)} setSearchResult={setSearchResult} />
                     </Grid>
                     <Grid item md={12} xs={11}>
-                        <PokeCardList searchResult={searchResult} isPokedex={false} setCartItems={setCartItems}/>
+                        <PokeCardList searchResult={searchResult} isPokedex={false} setCartItems={setCartItemsB}/>
                     </Grid>
-                    {cartItems.length ? <Cart cartItems={cartItems} setCartItems={setCartItems}/>: null}
-                    {cartItems.length  ? <MobileCart cartItems={cartItems} setCartItems={setCartItems}/> : null}
+                    {cartItemsB.length ? <Cart cartItems={cartItemsB} setCartItems={setCartItemsB}/>: null}
+                    {cartItemsB.length ? <MobileCart cartItems={cartItemsB} setCartItems={setCartItemsB}/> : null}
                 </Grid>
                 
             </ContentContainer>

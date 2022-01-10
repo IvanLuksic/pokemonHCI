@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState,useContext} from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,7 +13,7 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import menuContext from "./context";
+import {menuContext} from "./context";
 
 
 const drawerWidth = 240;
@@ -23,8 +23,8 @@ const pages = ['Home', 'Pokedex', 'Buy', 'Blog', 'About us', 'Login'];
 export default function Navbar() {
 
 
-  const { setMenuOpen } = React.useContext(menuContext);
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { setMenuOpen } = useContext(menuContext);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const handleDrawerToggle = () => {

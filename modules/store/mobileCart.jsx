@@ -5,7 +5,7 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { Global } from '@emotion/react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import menuContext from '../../components/context';
+import {menuContext} from '../../components/context';
 const drawerBleeding = 56;
 
 const StyledBox = styled(Box)(({ theme }) => ({
@@ -40,7 +40,7 @@ export default function MobileCart({cartItems, setCartItems}) {
 
     return (
         <Grid item xs={12}>
-{ !menuOpen ? 
+{ !menuOpen ? <>
             <Global
                     styles={{
                     '.MuiDrawer-root > .MuiPaper-root': {
@@ -50,7 +50,7 @@ export default function MobileCart({cartItems, setCartItems}) {
                     }}
                 />
 
-    : null}
+
     <SwipeableDrawer
         anchor="bottom"
         open={open}
@@ -102,8 +102,8 @@ export default function MobileCart({cartItems, setCartItems}) {
                     </Grid>
                  </Grid>
             </StyledBox>
-      </SwipeableDrawer> 
-
+      </SwipeableDrawer> </>
+    : null}
         </Grid>
     )
 }
