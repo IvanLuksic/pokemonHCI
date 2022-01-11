@@ -9,7 +9,7 @@ export default function AuthorsSection({ title, authors }) {
         <SectionContainer title={title}>
             {
                 authors.map((authorCard) =>
-                    <Grid item xs={12} md={6} sx={{ textAlign: "left", pr: "3em" }}>
+                    <Grid item xs={12} md={6} key={Math.random()} sx={{ textAlign: "left", pr: "3em" }}>
                         <AuthorCard authorImageUrl={authorCard.authorImageUrl} authorName={authorCard.authorName} authorWork={authorCard.authorWork} />
                     </Grid>
                 )
