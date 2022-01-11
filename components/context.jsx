@@ -10,4 +10,9 @@ const cartContext = createContext({
     setCartItems: (item) => {}
   });
 
-export {menuContext, cartContext};
+const loginContext = createContext({
+    loginState: false,
+    setLoginState: (state) => {}
+})
+
+export {menuContext, cartContext, loginContext};

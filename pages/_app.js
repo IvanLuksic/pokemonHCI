@@ -5,8 +5,13 @@ import Footer from '../components/footer';
 import { useRouter } from 'next/router';
 import Head from 'next/head'
 import ScrollToTop from '../components/scrollToTop'
-import {menuContext, cartContext} from '../components/context';
-import React, {useState} from 'react'
+import {menuContext, cartContext, loginContext} from '../components/context';
+import React, {useState, useEffect} from 'react'
+import '../modules/helpers/firebase'
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+
+
 // Kreiranje teme i wrappanje komponenti da su primary(TR plava) i secondary(TR žuta)
 // boje dostupni i primjenjeni u mui kroz cijeli projekt.
 
@@ -26,7 +31,15 @@ const theme = createTheme({
 function MyApp({ Component, pageProps }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [loginState, setLoginState] = useState(false);
   const router = useRouter()
+
+  useEffect(() => {
+    const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
+      setLoginState(!!user);
+    });
+    return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
+  }, []);
 
   return ( 
             <ThemeProvider theme={theme}>
@@ -37,13 +50,14 @@ function MyApp({ Component, pageProps }) {
                   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"></link>
                   <meta property="og:title" content="My page title" key="title" />
                </Head>
-               
-               <menuContext.Provider value={{ menuOpen, setMenuOpen }}>
-                  <Navbar/>
-                  <cartContext.Provider value={{cartItems, setCartItems}}>
-                    <Component {...pageProps}/>
-                  </cartContext.Provider>
-               </menuContext.Provider>
+               <loginContext.Provider value={{loginState, setLoginState}}>
+                  <menuContext.Provider value={{ menuOpen, setMenuOpen }}>
+                      <Navbar/>
+                      <cartContext.Provider value={{cartItems, setCartItems}}>
+                        <Component {...pageProps}/>
+                      </cartContext.Provider>
+                  </menuContext.Provider>
+               </loginContext.Provider>
                <Footer/>
 
                <ScrollToTop />

@@ -13,8 +13,9 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import {menuContext} from "./context";
-
+import {menuContext, loginContext} from "./context";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 
 const drawerWidth = 240;
 
@@ -24,7 +25,15 @@ export default function Navbar() {
 
 
   const { setMenuOpen } = useContext(menuContext);
+  const { loginState, setLoginState } = useContext(loginContext);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  function logout(){
+
+    
+    firebase.auth().signOut()
+    setLoginState(false)
+  }
 
   const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const handleDrawerToggle = () => {
@@ -36,7 +45,9 @@ export default function Navbar() {
     <div className='container' style={{height: "100%"}}>
       <Toolbar />
       <List>
-        {pages.map((page) => (
+        {loginState ? 
+        ( <React.Fragment>
+          {Array.from([...pages].splice(0,pages.length-1)).map((page) => (
           <React.Fragment key={page}>
             <Link href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
               <ListItem button onClick={handleDrawerToggle}>
@@ -44,8 +55,22 @@ export default function Navbar() {
               </ListItem>
             </Link>
             <Divider light/>
-          </React.Fragment>
-        ))}
+          </React.Fragment>))}
+          <ListItem button onClick={logout}>
+                <ListItemText primary='Logout' primaryTypographyProps={{fontFamily: "PokemonSolid",color: "primary"}} />
+          </ListItem>
+          </React.Fragment>)
+        :
+         (pages.map((page) => (
+            <React.Fragment key={page}>
+              <Link href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
+                <ListItem button onClick={handleDrawerToggle}>
+                  <ListItemText primary={page} primaryTypographyProps={{fontFamily: "PokemonSolid",color: "primary"}} />
+                </ListItem>
+              </Link>
+              <Divider light/>
+            </React.Fragment>
+        ))) }
       </List>
       
     </div>
@@ -99,18 +124,26 @@ export default function Navbar() {
 
           {/*Desktop navbar list*/}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },justifyContent:'flex-end' }}>
-            {pages.map((page) => (
+          {loginState ? 
+            ( <React.Fragment>
+                {Array.from([...pages].splice(0,pages.length-1)).map((page) => (
+                  <Link key={page} href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
+                    <Button sx={{ my: 2, display: 'block', fontFamily: 'PokemonSolid' }} color="primary" className='pokeFont' size='large'>
+                      {page}
+                    </Button>
+                  </Link>))}          
+                  <Button sx={{ my: 2, display: 'block', fontFamily: 'PokemonSolid' }} color="primary" className='pokeFont' size='large' onClick={logout}>
+                      Logout 
+                  </Button>
+            </React.Fragment>)    
+           :
+           (pages.map((page) => (
               <Link key={page} href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
-              <Button
-                sx={{ my: 2, display: 'block', fontFamily: 'PokemonSolid' }}
-                color="primary"
-                className='pokeFont'
-                size='large'
-                >
-                {page}
-              </Button>
+                <Button sx={{ my: 2, display: 'block', fontFamily: 'PokemonSolid' }} color="primary" className='pokeFont' size='large'>
+                  {page}
+                </Button>
               </Link>
-            ))}
+            )))}
           </Box>
 
 
