@@ -6,4 +6,5 @@ module.exports = {
       "raw.githubusercontent.com"
     ],
   },
+    swcMinify: false 
 }
