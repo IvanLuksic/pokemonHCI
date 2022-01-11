@@ -41,7 +41,7 @@ export default function BlogCard({title, content, imgUrl, imgDescription, author
                     </Grid>
                     <Grid item md sx={{ display: "flex", alignItems: "flex-end"}}>
                         <Link href={`/blog/${title}`} key={Math.random()} passHref>
-                            <Button variant="contained" sx={{ minWidth: "100%" }}>Read more...</Button>
+                            <Button variant="contained" sx={{ minWidth: "100%", textAlign: "center"}}>Read more...</Button>
                         </Link>
                     </Grid>
                 </Grid>
