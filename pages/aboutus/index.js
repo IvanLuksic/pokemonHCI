@@ -18,11 +18,11 @@ export default function AboutUs() {
                             aboutUs.map((section) => (
                                 section.authors != undefined
                                     ? (
-                                        <AuthorsSection {...section} />
+                                        <AuthorsSection key={Math.random()} {...section} />
                                     ) : (
                                         section.markDown != undefined
                                             ? (
-                                                <MdSection {...section} />
+                                                <MdSection key={Math.random()} {...section} />
                                             ) : (
                                                 null
                                             )
