@@ -5,9 +5,9 @@ import Search from '../../components/search'
 import PageHeading from '../../components/pageHeading'
 import BlogCardList from '../../components/blogCardList'
 import blogCardsMock from '../../staticFiles/blogCardsMock.json'
+import DataSourceApi from '../../lib/DataSourceApi'
 
-
-export default function Pokedex() {
+export default function BlogPosts({ posts }) {
 
     let [searchResult, setSearchResult] = useState(blogCardsMock);
 
@@ -20,10 +20,21 @@ export default function Pokedex() {
                         <Search searchType='blog' setSearchResult={setSearchResult} searchPool={blogCardsMock} />
                     </Grid>
                     <Grid item xs={11}>
-                        <BlogCardList searchResult={searchResult} />
+                        {/* {<BlogCardList searchResult={searchResult} />} */}
                     </Grid>
                 </Grid>
             </ContentContainer>
         </div>
     )
+}
+
+export async function getStaticProps() {
+
+    const posts = await DataSourceApi.getPosts();
+    
+    return {
+        props: {
+            posts,
+        },
+    };
 }
