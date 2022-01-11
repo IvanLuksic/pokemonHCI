@@ -42,7 +42,7 @@ export default function BlogCardList({searchResult}) {
                 <>
                     { windowWidth > theme.breakpoints.values.sm ? (
 
-                        <Grid item xs={12} sx={{ mb: {xs: "1em", md: "2em"} }}>
+                        <Grid item xs={12} key={Math.random()} sx={{ mb: {xs: "1em", md: "2em"} }}>
                             <BlogCard title={blogCard.title} content={blogCard.content} imgUrl={blogCard.imgUrl} imgDescription={blogCard.imgDescription} authorName={blogCard.authorName} authorImgUrl={blogCard.authorImgUrl}/>
                         </Grid>
 
