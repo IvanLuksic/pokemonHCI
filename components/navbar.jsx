@@ -100,7 +100,7 @@ export default function Navbar() {
           {/*Desktop navbar list*/}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' },justifyContent:'flex-end' }}>
             {pages.map((page) => (
-              <Link key={page} href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
+              <Link key={page} href={ page == 'Home' ? '/' : page.toLowerCase().replace(/\s/g,'')} passHref>
               <Button
                 sx={{ my: 2, display: 'block', fontFamily: 'PokemonSolid' }}
                 color="primary"
