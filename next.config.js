@@ -3,7 +3,8 @@ module.exports = {
   images: {
     domains: [
       "www.serebii.net",
-      "raw.githubusercontent.com"
+      "raw.githubusercontent.com",
+      "images.ctfassets.net"
     ],
   },
     swcMinify: false 
