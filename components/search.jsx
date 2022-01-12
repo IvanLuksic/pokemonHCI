@@ -67,7 +67,7 @@ export default function Search({autocompleteList, setSearchResult, chipList, sea
                     
                     value => value.title.toUpperCase().includes(searchValue.toUpperCase())
             
-                    || value.content.toUpperCase().includes(searchValue.toUpperCase())
+                    || value.summary.toUpperCase().includes(searchValue.toUpperCase())
                 
                     || value.authorName.toUpperCase().includes(searchValue.toUpperCase())
             

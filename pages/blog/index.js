@@ -4,12 +4,11 @@ import ContentContainer from '../../components/contentContainer'
 import Search from '../../components/search'
 import PageHeading from '../../components/pageHeading'
 import BlogCardList from '../../components/blogCardList'
-import blogCardsMock from '../../staticFiles/blogCardsMock.json'
 import DataSourceApi from '../../lib/DataSourceApi'
 
-export default function BlogPosts({ posts }) {
+export default function BlogPosts({ postCards }) {
 
-    let [searchResult, setSearchResult] = useState(blogCardsMock);
+    let [searchResult, setSearchResult] = useState(postCards);
 
     return (
         <div className='container'>
@@ -17,10 +16,10 @@ export default function BlogPosts({ posts }) {
                 <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ width: "100%" }}>
                     <PageHeading heading="Find what is interesting for you" xs={11} />
                     <Grid item xs={11} >
-                        <Search searchType='blog' setSearchResult={setSearchResult} searchPool={blogCardsMock} />
+                        <Search searchType='blog' setSearchResult={setSearchResult} searchPool={postCards} />
                     </Grid>
                     <Grid item xs={11}>
-                        {/* {<BlogCardList searchResult={searchResult} />} */}
+                        <BlogCardList searchResult={searchResult} />
                     </Grid>
                 </Grid>
             </ContentContainer>
@@ -30,11 +29,11 @@ export default function BlogPosts({ posts }) {
 
 export async function getStaticProps() {
 
-    const posts = await DataSourceApi.getPosts();
-    
+    const postCards = await DataSourceApi.getPosts();
+
     return {
         props: {
-            posts,
+            postCards,
         },
     };
 }
