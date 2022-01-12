@@ -49,7 +49,7 @@ export default function Navbar() {
         ( <React.Fragment>
           {Array.from([...pages].splice(0,pages.length-1)).map((page) => (
           <React.Fragment key={page}>
-            <Link href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
+            <Link href={ page == 'Home' ? '/' : page.toLowerCase().replace(/\s/g,'')} passHref>
               <ListItem button onClick={handleDrawerToggle}>
                 <ListItemText primary={page} primaryTypographyProps={{fontFamily: "PokemonSolid",color: "primary"}} />
               </ListItem>
@@ -63,7 +63,7 @@ export default function Navbar() {
         :
          (pages.map((page) => (
             <React.Fragment key={page}>
-              <Link href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
+              <Link href={ page == 'Home' ? '/' : page.toLowerCase().replace(/\s/g,'')} passHref>
                 <ListItem button onClick={handleDrawerToggle}>
                   <ListItemText primary={page} primaryTypographyProps={{fontFamily: "PokemonSolid",color: "primary"}} />
                 </ListItem>
@@ -127,7 +127,7 @@ export default function Navbar() {
           {loginState ? 
             ( <React.Fragment>
                 {Array.from([...pages].splice(0,pages.length-1)).map((page) => (
-                  <Link key={page} href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
+                  <Link key={page} href={ page == 'Home' ? '/' : page.toLowerCase().replace(/\s/g,'')} passHref>
                     <Button sx={{ my: 2, display: 'block', fontFamily: 'PokemonSolid' }} color="primary" className='pokeFont' size='large'>
                       {page}
                     </Button>
@@ -138,7 +138,7 @@ export default function Navbar() {
             </React.Fragment>)    
            :
            (pages.map((page) => (
-              <Link key={page} href={ page == 'Home' ? '/' : page.toLowerCase()} passHref>
+              <Link key={page} href={ page == 'Home' ? '/' : page.toLowerCase().replace(/\s/g,'')} passHref>
                 <Button sx={{ my: 2, display: 'block', fontFamily: 'PokemonSolid' }} color="primary" className='pokeFont' size='large'>
                   {page}
                 </Button>

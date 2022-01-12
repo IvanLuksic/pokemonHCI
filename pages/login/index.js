@@ -8,6 +8,8 @@ import { Grid, Paper, Typography } from '@mui/material';
 import PageHeading from '../../components/pageHeading';
 import {loginContext} from '../../components/context'
 
+
+
 const uiConfig = {
     // Popup signin flow rather than redirect flow.
     signInFlow: 'popup',
@@ -37,7 +39,7 @@ export default function Login() {
                 <Grid container direction='row'   justifyContent="center" alignItems="center">
                     <PageHeading heading="Login" />
                     
-                    <Grid item xs={10} md={6} lg={4} mt='2em' >
+                    <Grid item xs={10} md={6} lg={4} mt='2em' mb='4em'>
                         <Paper elevation={2} sx={{backgroundColor: "#f5f5f5", padding: "2em", borderRadius: 8, textAlign: 'center'}}>
                             <Typography variant='h5' color='primary' sx={{fontWeight: 600}}  mb='1em'>Choose a sign in option</Typography>
                             <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />

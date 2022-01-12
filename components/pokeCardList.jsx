@@ -14,7 +14,7 @@ export default function PokeCardList({searchResult, isPokedex, setCartItems}) {
         <Grid container direction="row" justifyContent="center" alignItems="center" sx={{width: '100%', mt: "2em",mb: "5em"}}>
             {searchResult.map( value => (PokemonList[value - 1])).map( ({id,name, type}) => (
                  isPokedex ? 
-                    (<Link href={`/pokemon/${id}`} key={Math.random()} passHref>
+                    (<Link href={{ pathname: '/pokemon/[pokeId]', query: { pokeId: id },}} key={Math.random()} passHref>
                         <Grid item md={5} xs={11} sx={{margin: "0.5em", cursor:"pointer"}}>
                             <PokedexCard name={name} id={id} type={type[0]} />                
                         </Grid>

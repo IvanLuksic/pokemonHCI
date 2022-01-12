@@ -16,6 +16,17 @@ export default function Buy() {
 
     let [cartItemsB, setCartItemsB] = useState(cartItems);
 
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+      function handleResize() {
+        setWindowWidth(window.innerWidth);
+      }
+  
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     useEffect(() => {
         setCartItems(cartItemsB)
     }, [cartItemsB])
@@ -37,7 +48,10 @@ export default function Buy() {
                         <PokeCardList searchResult={searchResult} isPokedex={false} setCartItems={setCartItemsB}/>
                     </Grid>
                     {cartItemsB.length ? <Cart cartItems={cartItemsB} setCartItems={setCartItemsB}/>: null}
-                    {cartItemsB.length ? <MobileCart cartItems={cartItemsB} setCartItems={setCartItemsB}/> : null}
+
+                    
+                    {//Window.innerWidth se koristi zato što u protivnom mobile cart prekriva scroll to top fab
+                    cartItemsB.length && windowWidth < 920 ? <MobileCart cartItems={cartItemsB} setCartItems={setCartItemsB}/> : null}
                 </Grid>
                 
             </ContentContainer>
