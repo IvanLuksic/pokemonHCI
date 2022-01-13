@@ -25,9 +25,7 @@ export default function BlogCard({ title, summary, cardImage, author }) {
                         <Typography variant="h6" sx={{ fontWeight: 100}}>{summary}</Typography>
                     </Grid>
                     <Grid item xs md={0} sx={{ [theme.breakpoints.up('xs')]: { height: "100%", width: "100%" }, [theme.breakpoints.up('md')]: { display: "none"}, textAlign: "right" }}>
-                        <Link href={`/blog/${title}`} key={Math.random()} passHref>
-                            <Button variant="contained">Read more...</Button>
-                        </Link>
+                        <Button variant="contained">Read more...</Button>
                     </Grid>
                 </Grid>
                 <Grid container item direction="column" xs={0} md={2} sx={{ [theme.breakpoints.down('md')]: { display: "none" }, [theme.breakpoints.up('md')]: { display: "flex" }, pl: "1em"}}>
@@ -43,7 +41,7 @@ export default function BlogCard({ title, summary, cardImage, author }) {
                     </Grid>
                     <Grid item md sx={{ display: "flex", alignItems: "flex-end"}}>
                         <Link href={`/blog/${title}`} key={Math.random()} passHref>
-                            <Button variant="contained" sx={{ minWidth: "100%", textAlign: "center"}}>Read more...</Button>
+                            <Button variant="contained" sx={{ minWidth: "100%" }}>Read more...</Button>
                         </Link>
                     </Grid>
                 </Grid>

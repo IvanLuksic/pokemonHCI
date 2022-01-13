@@ -5,8 +5,9 @@ import ContentContainer from '../../components/contentContainer'
 import PageHeading from '../../components/pageHeading'
 import MdSection from '../../components/mdSection'
 import aboutUs from '../../staticFiles/aboutUs.json'
+import DataSourceApi from '../../lib/DataSourceApi'
 
-export default function AboutUs() {
+export default function AboutUs({ sections }) {
 
     return (
         <div className='container'>
@@ -15,14 +16,14 @@ export default function AboutUs() {
                     <PageHeading heading="About us" xs={10} sx={{ textAlign: "left" }} />
                     <Grid item xs={10} sx={{ pb: "4em" }}>
                         {
-                            aboutUs.map((section) => (
+                            sections.map((section) => (
                                 section.authors != undefined
                                     ? (
-                                        <AuthorsSection key={Math.random()} {...section} />
+                                        <AuthorsSection {...section} />
                                     ) : (
-                                        section.markDown != undefined
+                                        section.markdown != undefined
                                             ? (
-                                                <MdSection key={Math.random()} {...section} />
+                                                <MdSection key={section.sys.id} {...section} />
                                             ) : (
                                                 null
                                             )
@@ -34,4 +35,15 @@ export default function AboutUs() {
             </ContentContainer>
         </div>
     )
+}
+
+export async function getStaticProps() {
+
+    const sections = await DataSourceApi.getAboutUs();
+
+    return {
+        props: {
+            sections,
+        },
+    };
 }

@@ -1,7 +1,7 @@
 import { Grid, Typography } from '@mui/material'
 import React from 'react'
-import AuthorCard from './author/authorCard'
-import aboutUs from '../staticFiles/aboutUs.json'
+import AuthorCard from '../author/authorCard'
+import aboutUs from '../../staticFiles/aboutUs.json'
 
 export default function sectionContainer(props) {
 
@@ -10,7 +10,7 @@ export default function sectionContainer(props) {
             <Grid item xs sx={{ width: "100%", pb: "0.5em" }}>
                 <Typography variant="h4" sx={{ fontWeight: 600 }}>{props.title}</Typography>
             </Grid>
-            <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ width: "100%", pl: { xs: "0.5em", em: "1em" } }}>
+            <Grid container direction="row" justifyContent="flex-start" alignItems="flex-start" sx={{ width: "100%", pl: { xs: "0.5em", em: "1em" } }}>
                 {props.children}
             </Grid>
         </Grid>
