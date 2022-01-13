@@ -36,7 +36,7 @@ export default function Pokemon() {
 
                     </Grid>
                     <Grid item xs={11} md={6} sx={{ mt: '1em',textAlign: 'right'}}>
-                        {types.map(type => <Grid direction="row" justifyContent="center" alignItems="center" sx={{backgroundColor: TypeToColor[type], padding:'1em', borderRadius: "50%", height: "5em",width: "5em", display: "inline-block", mr: '1em'}}><Grid item xs={12} sx={{textAlign: 'center', verticalAlign: 'middle'}}>{type}</Grid></Grid>)}
+                        {types.map(type => <Grid direction="row" key={type} justifyContent="center" alignItems="center" sx={{backgroundColor: TypeToColor[type], padding:'1em', borderRadius: "50%", height: "5em",width: "5em", display: "inline-block", mr: '1em'}}><Grid item xs={12} sx={{textAlign: 'center', verticalAlign: 'middle'}}>{type}</Grid></Grid>)}
                     </Grid>
                     <Grid item xs={11}>
                         <Grid container direction="row" justifyContent="center" alignItems="center" spacing={4}>    
