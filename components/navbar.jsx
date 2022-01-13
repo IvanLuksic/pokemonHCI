@@ -127,7 +127,7 @@ export default function Navbar() {
           {loginState ? 
             ( <React.Fragment>
                 {Array.from([...pages].splice(0,pages.length-1)).map((page) => (
-                  <Link key={page} href={ page == 'Home' ? '/' : page.toLowerCase().replace(/\s/g,'')} passHref>
+                  <Link key={page} href={ page == 'Home' ? '/' : page.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase()) } passHref>
                     <Button sx={{ my: 2, display: 'block', fontFamily: 'PokemonSolid' }} color="primary" className='pokeFont' size='large'>
                       {page}
                     </Button>
@@ -138,7 +138,7 @@ export default function Navbar() {
             </React.Fragment>)    
            :
            (pages.map((page) => (
-              <Link key={page} href={ page == 'Home' ? '/' : page.toLowerCase().replace(/\s/g,'')} passHref>
+              <Link key={page} href={ page == 'Home' ? '/' : page.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase()) } passHref>
                 <Button sx={{ my: 2, display: 'block', fontFamily: 'PokemonSolid' }} color="primary" className='pokeFont' size='large'>
                   {page}
                 </Button>
