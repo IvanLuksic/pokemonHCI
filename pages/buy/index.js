@@ -16,7 +16,7 @@ export default function Buy() {
 
     let [cartItemsB, setCartItemsB] = useState(cartItems);
 
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [windowWidth, setWindowWidth] = useState();
 
     useEffect(() => {
       function handleResize() {
