@@ -1,10 +1,11 @@
-import { Grid, useState } from '@mui/material'
+import { Grid } from '@mui/material'
 import React from 'react'
 import AuthorsSection from '../../components/authorsSection'
 import ContentContainer from '../../components/contentContainer'
 import PageHeading from '../../components/pageHeading'
 import MdSection from '../../components/mdSection'
-import aboutUs from '../../staticFiles/aboutUs.json'
+import { serialize } from 'next-mdx-remote/serialize';
+import remarkUnwrapImages from 'remark-unwrap-images';
 import DataSourceApi from '../../lib/DataSourceApi'
 
 export default function AboutUs({ sections }) {
@@ -39,7 +40,18 @@ export default function AboutUs({ sections }) {
 
 export async function getStaticProps() {
 
-    const sections = await DataSourceApi.getAboutUs();
+    let sections = await DataSourceApi.getAboutUs();
+
+
+    sections = await Promise.all(sections.map(async value => {
+        if (value.markdown != undefined) {
+            value.mdxSource = await serialize(value.markdown, {
+                mdxOptions: { remarkPlugins: [remarkUnwrapImages] },
+            });
+        }
+        return await value
+    }))
+
 
     return {
         props: {
