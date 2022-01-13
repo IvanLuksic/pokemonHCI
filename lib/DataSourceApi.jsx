@@ -1,4 +1,4 @@
-import { GraphQLClient, gql } from 'graphql-request';
+import { GraphQLClient, gql } from "graphql-request";
 
 const graphQLClient = new GraphQLClient(
   `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/${process.env.CONTENTFUL_ENVIRONMENT}`
@@ -8,45 +8,46 @@ class DataSourceAPI {
   // --- START Contentful ---
   static queryContentful(query, variables = {}) {
     const requestHeaders = {
-      Authorization: `Bearer ${variables?.preview
-        ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
-        : process.env.CONTENTFUL_ACCESS_TOKEN
-        }`,
+      Authorization: `Bearer ${
+        variables?.preview
+          ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
+          : process.env.CONTENTFUL_ACCESS_TOKEN
+      }`,
     };
 
     try {
       return graphQLClient.request(query, variables, requestHeaders);
     } catch (error) {
-      console.log(error)
-      throw new Error('Could not fetch data from Contentful!');
+      console.log(error);
+      throw new Error("Could not fetch data from Contentful!");
     }
   }
 
   static async getPosts({ preview = false } = {}) {
     const query = gql`
-          query getPosts($preview: Boolean!) {
-            blogPostCollection(preview: $preview, order: date_DESC) {
-              postCards: items {
-                sys {
-                  id
-                }
+      query getPosts($preview: Boolean!) {
+        blogPostCollection(preview: $preview, order: date_DESC) {
+          postCards: items {
+            sys {
+              id
+            }
+            title
+            summary
+            cardImage {
+              title
+              url
+            }
+            author {
+              nickname
+              image {
                 title
-                summary
-                cardImage {
-                  title
-                  url
-                }
-                author {
-                  nickname
-                  image {
-                    title
-                    url
-                  }
-                }
+                url
               }
             }
           }
-        `;
+        }
+      }
+    `;
 
     const variables = { preview };
     const response = await this.queryContentful(query, variables);
@@ -59,7 +60,7 @@ class DataSourceAPI {
       query getSections($preview: Boolean!) {
         authorCollection(preview: $preview) {
           authors: items {
-            sys{
+            sys {
               id
             }
             name
@@ -74,7 +75,7 @@ class DataSourceAPI {
         }
         markdownSectionCollection(preview: $preview) {
           markdownSection: items {
-            sys{
+            sys {
               id
             }
             title
@@ -82,7 +83,7 @@ class DataSourceAPI {
           }
         }
       }
-      `;
+    `;
 
     const variables = { preview };
     const response = await this.queryContentful(query, variables);
