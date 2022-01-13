@@ -7,8 +7,4 @@ module.exports = {
       "images.ctfassets.net"
     ],
   },
-  webpack: (config) => {
-    config.experiments = { topLevelAwait: true };
-    return config;
-  }
 }
