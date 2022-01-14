@@ -14,7 +14,7 @@ export default function BlogPosts({ postCards }) {
         <div className='container'>
             <ContentContainer>
                 <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ width: "100%" }}>
-                    <PageHeading heading="Find what is interesting for you" xs={11} />
+                    <PageHeading heading={"Blog"} subheading={"Find what is interesting for you"} xs={11} />
                     <Grid item xs={11} >
                         <Search searchType='blog' setSearchResult={setSearchResult} searchPool={postCards} />
                     </Grid>
