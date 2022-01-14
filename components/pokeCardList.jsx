@@ -19,7 +19,7 @@ export default function PokeCardList({
       direction="row"
       justifyContent="center"
       alignItems="center"
-      sx={{ width: "100%", mt: "2em", mb: "5em" }}
+      sx={{ width: "100%", mt: "1em", mb: "1em" }}
     >
       {searchResult
         .map((value) => PokemonList[value - 1])

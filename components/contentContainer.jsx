@@ -8,7 +8,7 @@ export default function ContentContainer(props) {
         <Paper
           sx={{
             marginTop: { md: "4.5em", sm: "4em", xs: "3.5em" },
-            height: "100%",
+            height: "100%", mb: "5em"
           }}
           elevation={4}
         >

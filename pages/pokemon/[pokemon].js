@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Paper, Grid, Typography, Box } from "@mui/material";
 import ContentContainer from "../../components/contentContainer";
+import PokeCardList from "../../components/pokeCardList";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import PokemonInfoContainer from "../../modules/pokedex/pokemonInfoContainer";
@@ -10,23 +11,13 @@ import { route } from "next/dist/server/router";
 import PokemonList from "../../staticFiles/pokemonList.json";
 import TypeToColor from "../../staticFiles/correspondingTypeColor.json";
 
-export default function Pokemon() {
-  const router = useRouter();
-  const [pokemon, setPokemon] = useState(PokemonList[router.query.pokemon - 1]);
+export default function Pokemon({pokemon, pokeapi, color}) {
 
-  const types = ["Grass", "Fire"];
 
-  const abilities = [
-    { heading: "Punch", text: "punch lorem lorem lorem" },
-    { heading: "Punch", text: "punch lorem lorem lorem" },
-    { heading: "Punch", text: "punch lorem lorem lorem" },
-    { heading: "Punch", text: "punch lorem lorem lorem" },
-    { heading: "Punch", text: "punch lorem lorem lorem" },
-    { heading: "Punch", text: "punch lorem lorem lorem" },
-    { heading: "Punch", text: "punch lorem lorem lorem" },
-  ];
+   let evolutions = []
+   pokemon.next_evolution ? evolutions.push(...pokemon.next_evolution) : null
+   pokemon.prev_evolution ? evolutions.push(...pokemon.prev_evolution) : null
 
-  console.log(router.query.pokemon);
   return (
     <div className="container">
       <ContentContainer>
@@ -39,30 +30,32 @@ export default function Pokemon() {
         >
           <Grid item xs={12} id="back-to-top-anchor">
             <Paper
-              elevation={0}
+              elevation={2}
               sx={{
                 textAlign: "center",
+                borderRadius: 0,
                 background: `linear-gradient(to top, ${
-                  TypeToColor[types[1]]
+                  color
                 },50%, transparent)`,
               }}
             >
               <Image
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${router.query.pokemon}.svg`}
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
                 width={300}
                 height={300}
-                alt={router.query.pokemon}
+                alt={pokemon.name}
               />
             </Paper>
           </Grid>
-          <Grid item xs={11} md={6}>
-            <Typography variant="h3" ml="1em" sx={{ fontWeight: 600 }}>
-              {/*(PokemonList[router.query.pokemon - 1].name*/}
+          <Grid item xs={11} md={6} sx={{textAlign: {md: 'left', sm: 'center', xs: 'center', },mt: "1em"}}>
+            <Typography variant="h3" sx={{ fontWeight: 600 }}>
+              {pokemon.name}
             </Typography>
           </Grid>
-          <Grid item xs={11} md={6} sx={{ mt: "1em", textAlign: "right" }}>
-            {types.map((type) => (
+          <Grid item xs={11} md={5} sx={{ mt: "1em", textAlign: "right" }}>
+            {pokemon.type.map((type) => (
               <Grid
+                container
                 direction="row"
                 key={type}
                 justifyContent="center"
@@ -80,9 +73,9 @@ export default function Pokemon() {
                 <Grid
                   item
                   xs={12}
-                  sx={{ textAlign: "center", verticalAlign: "middle" }}
+                  sx={{ textAlign: "center", transform: "translateY(-0.35em)"}}
                 >
-                  {type}
+                  <p>{type}</p>
                 </Grid>
               </Grid>
             ))}
@@ -96,19 +89,31 @@ export default function Pokemon() {
               spacing={4}
             >
               <PokemonInfoContainer heading="Abilities">
-                {abilities.map((ability) => (
-                  <PokemonICCard
-                    key={ability.heading}
-                    heading={ability.heading}
-                    text={ability.text}
-                  />
-                ))}
+                <Box sx={{overflowY: "scroll", maxHeight: "10.5em",}}>
+                {pokeapi.abilities.map((ability) => (
+                    <PokemonICCard
+                        key={ability.name}
+                        heading={ability.name}
+                        text={ability.effect_entries[1].short_effect}
+                    />
+                    ))}
+                </Box>
               </PokemonInfoContainer>
-              <PokemonInfoContainer heading="Moves"></PokemonInfoContainer>
-              <PokemonInfoContainer
+              <PokemonInfoContainer heading="Moves">
+                <Box sx={{overflowY: "scroll", maxHeight: "10.5em",}}>
+                    {pokeapi.moves.map(moves=>  <PokemonICCard
+                        key={moves.move.name}
+                        heading={moves.move.name}
+                    />)}
+                
+                </Box>
+              </PokemonInfoContainer>
+              {evolutions.length ? <PokemonInfoContainer
                 fullWidth
                 heading="Evolutions"
-              ></PokemonInfoContainer>
+              >
+                  <PokeCardList isPokedex searchResult={evolutions.map(evolution => parseInt(evolution.num))} />
+              </PokemonInfoContainer> : null}
             </Grid>
           </Grid>
         </Grid>
@@ -116,3 +121,58 @@ export default function Pokemon() {
     </div>
   );
 }
+
+export async function getStaticPaths() {
+    const pokemonList = require('../../staticFiles/pokemonList.json');
+
+    const paths = pokemonList.map((post, index) => ({
+        params: {
+            pokemon: String(index+1),
+        },
+    }));
+
+    return {
+        paths,
+        fallback: false,
+    };
+
+}
+
+export const getStaticProps = async ({params: {pokemon}}) => {
+
+    const pokemonId = pokemon;
+
+    let ability
+    let abilitiesList = []
+
+    const PokeApi = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`).then(response => response.json())
+    const PokeApiAbilities = PokeApi.abilities
+    
+    for(let i = 0; i < PokeApiAbilities.length; i++){
+
+        ability = await fetch(PokeApiAbilities[i].ability.url).then(response => response.json())
+
+        abilitiesList.push(ability)
+    }
+    
+    const PokeApiMoves = PokeApi.moves
+    
+    const pokeapiObj = {
+        moves: PokeApiMoves,
+        abilities: abilitiesList
+    } 
+    
+    const PokeList = require('../../staticFiles/pokemonList.json');
+    const TypeToColor = require('../../staticFiles/correspondingTypeColor.json')
+
+
+  
+    return {
+      props: {
+        pokemon: PokeList[pokemonId - 1],
+        pokeapi: pokeapiObj,
+        color: TypeToColor[PokeList[pokemonId-1].type[0]]
+      },
+      revalidate: 1,
+    };
+  };
