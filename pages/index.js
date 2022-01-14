@@ -1,6 +1,5 @@
-import ContentContainer from "../components/contentContainer";
-import Footer from "../components/footer";
-import Navbar from "../components/navbar";
+
+import ContentContainer from '../components/contentContainer';
 
 export default function Home() {
   return (

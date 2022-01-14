@@ -1,18 +1,18 @@
-import { createContext } from "react";
+import { createContext } from "react"
 
 const menuContext = createContext({
-  menuOpen: false,
-  setMenuOpen: (menu) => {},
-});
+	menuOpen: false,
+	setMenuOpen: (menu) => {}
+})
 
 const cartContext = createContext({
-  cartItems: [],
-  setCartItems: (item) => {},
-});
+	cartItems: [],
+	setCartItems: (item) => {}
+})
 
 const loginContext = createContext({
-  loginState: false,
-  setLoginState: (state) => {},
-});
+	loginState: false,
+	setLoginState: (state) => {}
+})
 
-export { menuContext, cartContext, loginContext };
+export { menuContext, cartContext, loginContext }
