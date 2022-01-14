@@ -9,7 +9,6 @@ import DataSourceApi from "../../lib/DataSourceApi";
 export default function BlogPosts({ postCards }) {
   let [searchResult, setSearchResult] = useState(postCards);
 
-    let [searchResult, setSearchResult] = useState(postCards);
 
     return (
         <div className='container'>
