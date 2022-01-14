@@ -18,7 +18,7 @@ export default function AboutUs({ sections }) {
 						{sections.map((section) =>
 							section.authors != undefined ? (
 								<AuthorsSection {...section} />
-							) : section.mdxSource != undefined ? (
+							) : section.content != undefined ? (
 								<MdSection key={section.sys.id} {...section} />
 							) : null
 						)}
@@ -34,12 +34,10 @@ export async function getStaticProps() {
 
 	sections = await Promise.all(
 		sections.map(async (value) => {
-			if (value.markdown != undefined) {
-				value.mdxSource = await serialize(value.markdown, {
+			if (value.content != undefined) {
+				value.content = await serialize(value.content, {
 					mdxOptions: { remarkPlugins: [remarkUnwrapImages] }
 				})
-
-				delete value.markdown
 			}
 			return await value
 		})

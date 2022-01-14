@@ -42,7 +42,7 @@ export default function BlogCardList({ searchResult }) {
 						<BlogCard {...blogCard} />
 					</Grid>
 				) : (
-					<Link href={`/blog/${blogCard.sys.id}`} key={blogCard.sys.id} passHref>
+					<Link href={`/blog/${blogCard.slug}`} key={blogCard.sys.id} passHref>
 						<Grid item xs={12} sx={{ mb: { xs: "1em", md: "2em" }, cursor: "pointer" }}>
 							<BlogCard {...blogCard} />
 						</Grid>
