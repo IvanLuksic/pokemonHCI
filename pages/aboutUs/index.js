@@ -18,7 +18,7 @@ export default function AboutUs({ sections }) {
 						{sections.map((section) =>
 							section.authors != undefined ? (
 								<AuthorsSection {...section} />
-							) : section.markdown != undefined ? (
+							) : section.mdxSource != undefined ? (
 								<MdSection key={section.sys.id} {...section} />
 							) : null
 						)}
