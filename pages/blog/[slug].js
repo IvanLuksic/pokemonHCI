@@ -27,7 +27,9 @@ export default function BlogPost({ post }) {
 					>
 						<MDXRemote {...post.content} lazy />
 					</Grid>
-					<SimilarContentSection similarContent={post.similarContent} />
+					{post.similarContent.length != 0 ? (
+						<SimilarContentSection similarContent={post.similarContent} />
+					) : null}
 					<Grid item xs={11} direction="column" justifyContent="center" alignItems="flex-star">
 						<Link href={"/blog"} passHref>
 							<Button variant="contained" sx={{ textAlign: "center", minWidth: "150px" }}>
