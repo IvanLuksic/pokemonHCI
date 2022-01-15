@@ -19,7 +19,8 @@ export default function AuthorImageWithName({ image, name, surname, nickname, sx
 			</Grid>
 			<Grid item md sx={{ height: "100%", width: "100%", textAlign: "center", pt: "0.25em" }}>
 				<Typography>
-					<b>by: </b> {name != null ? name + " " + surname : nickname}
+					<b>by: </b>
+					{name != null ? name + " " + (surname != null ? surname : nickname) : nickname}
 				</Typography>
 			</Grid>
 		</Grid>

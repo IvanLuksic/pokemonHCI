@@ -62,7 +62,7 @@ export default function BlogCard({ title, summary, cardImage, author, slug }) {
 					}}
 				>
 					<AuthorImageWithName {...author} />
-					<Grid item md sx={{ display: "flex", alignItems: "flex-end" }}>
+					<Grid item md sx={{ display: "flex", alignItems: "flex-end", pt: "1em" }}>
 						<Link href={`/blog/${slug}`} passHref>
 							<Button variant="contained" sx={{ minWidth: "100%", textAlign: "center" }}>
 								Read more...
