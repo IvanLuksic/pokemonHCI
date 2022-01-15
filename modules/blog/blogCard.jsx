@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import React from "react"
 import AuthorImage from "../author/authorImage"
+import AuthorImageWithName from "../author/authorImageWithName"
 
 export default function BlogCard({ title, summary, cardImage, author, slug }) {
 	const theme = useTheme()
@@ -60,16 +61,7 @@ export default function BlogCard({ title, summary, cardImage, author, slug }) {
 						pl: "1em"
 					}}
 				>
-					<Grid item md sx={{ width: "100%", aspectRatio: "1" }}>
-						<Link href={`/aboutUs`} passHref>
-							<a>
-								<AuthorImage {...author.image} />
-							</a>
-						</Link>
-					</Grid>
-					<Grid item md sx={{ height: "100%", width: "100%", textAlign: "center", pt: "0.25em", pb: "1em" }}>
-						<Typography>by: {author.nickname}</Typography>
-					</Grid>
+					<AuthorImageWithName {...author} />
 					<Grid item md sx={{ display: "flex", alignItems: "flex-end" }}>
 						<Link href={`/blog/${slug}`} passHref>
 							<Button variant="contained" sx={{ minWidth: "100%", textAlign: "center" }}>
