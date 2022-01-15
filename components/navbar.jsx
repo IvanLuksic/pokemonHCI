@@ -49,7 +49,7 @@ export default function Navbar() {
 					<React.Fragment>
 						{Array.from([...pages].splice(0, pages.length - 1)).map((page) => (
 							<React.Fragment key={page}>
-								<Link href={page == "Home" ? "/" : page.toLowerCase().replace(/\s/g, "")} passHref>
+								<Link href={page == "Home" ? "/" : "/"+page.toLowerCase().replace(/\s/g, "")} passHref>
 									<ListItem button onClick={handleDrawerToggle}>
 										<ListItemText
 											primary={page}
@@ -70,7 +70,7 @@ export default function Navbar() {
 				) : (
 					pages.map((page) => (
 						<React.Fragment key={page}>
-							<Link href={page == "Home" ? "/" : page.toLowerCase().replace(/\s/g, "")} passHref>
+							<Link href={page == "Home" ? "/" : "/"+page.toLowerCase().replace(/\s/g, "")} passHref>
 								<ListItem button onClick={handleDrawerToggle}>
 									<ListItemText
 										primary={page}
@@ -150,7 +150,7 @@ export default function Navbar() {
 										href={
 											page == "Home"
 												? "/"
-												: page
+												: "/"+page
 														.toLowerCase()
 														.replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase())
 										}
@@ -183,7 +183,7 @@ export default function Navbar() {
 									href={
 										page == "Home"
 											? "/"
-											: page
+											: "/" + page
 													.toLowerCase()
 													.replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase())
 									}
