@@ -69,6 +69,7 @@ class DataSourceAPI {
 							title
 							url
 						}
+						date
 						author {
 							name
 							surname
