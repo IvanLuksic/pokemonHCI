@@ -11,7 +11,7 @@ export default function HeroImage({ title, url }) {
 			xs
 			sx={{
 				width: "100%",
-				height: "500px",
+				height: { xs: "300px", sm: "500px" },
 				position: "relative"
 			}}
 		>
