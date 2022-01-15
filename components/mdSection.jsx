@@ -1,6 +1,6 @@
 import { Grid, Typography } from "@mui/material"
 import React from "react"
-import SectionContainer from "../modules/aboutUs/sectionConteiner"
+import SectionContainer from "../modules/common/sectionConteiner"
 import { MDXRemote } from "next-mdx-remote"
 
 export default function MdSection({ title, content }) {

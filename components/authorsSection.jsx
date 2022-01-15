@@ -1,6 +1,6 @@
 import { Grid, Typography } from "@mui/material"
 import React from "react"
-import SectionContainer from "../modules/aboutUs/sectionConteiner"
+import SectionContainer from "../modules/common/sectionConteiner"
 import AuthorCard from "../modules/author/authorCard"
 
 export default function AuthorsSection({ authors }) {
