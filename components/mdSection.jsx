@@ -1,7 +1,8 @@
-import { Grid, Typography } from "@mui/material"
+import { Grid } from "@mui/material"
 import React from "react"
-import SectionContainer from "../modules/aboutUs/sectionConteiner"
+import SectionContainer from "../modules/common/sectionConteiner"
 import { MDXRemote } from "next-mdx-remote"
+import components from "../modules/common/mdxComponents/index"
 
 export default function MdSection({ title, content }) {
 	return (
@@ -9,7 +10,7 @@ export default function MdSection({ title, content }) {
 			<Grid item xs sx={{ textAlign: "left" }}>
 				{/* {Shoudld be deserialized markdown, not typography} */}
 				{/* <Typography variant="h6" sx={{ fontWeight: 100 }}>{markdown}</Typography> */}
-				<MDXRemote {...content} lazy />
+				<MDXRemote {...content} components={components} lazy />
 			</Grid>
 		</SectionContainer>
 	)

@@ -2,7 +2,6 @@ import { Button, Grid, Paper, Typography, useTheme } from "@mui/material"
 import Image from "next/image"
 import Link from "next/link"
 import React from "react"
-import AuthorImage from "../author/authorImage"
 import AuthorImageWithName from "../author/authorImageWithName"
 
 export default function BlogCard({ title, summary, cardImage, author, slug }) {

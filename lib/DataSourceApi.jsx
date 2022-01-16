@@ -79,6 +79,15 @@ class DataSourceAPI {
 								url
 							}
 						}
+						similarContentCollection {
+							items {
+								sys {
+									id
+								}
+								title
+								slug
+							}
+						}
 						slug
 					}
 				}

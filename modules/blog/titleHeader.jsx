@@ -7,7 +7,7 @@ export default function TitleHeader({ title, date, author }) {
 	const dateObj = new Date(date)
 
 	return (
-		<Grid container direction="row" xs={11} sx={{ display: "flex", pt: "2em", pb: "1em" }}>
+		<Grid container item direction="row" xs={11} sx={{ display: "flex", pt: "2em", pb: "1em" }}>
 			<Grid container item direction="column" xs md>
 				<Grid item xs={1} sx={{ width: { sm: "80%" }, pb: "1em" }}>
 					<Typography variant="h3" sx={{ fontWeight: 600 }}>
