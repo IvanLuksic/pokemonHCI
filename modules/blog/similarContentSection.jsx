@@ -16,7 +16,7 @@ export default function SimilarContentSection({ similarContent }) {
 				<ul style={{ listStyleType: "none", padding: 0, margin: 0 }}>
 					{similarContent.map((blog) => (
 						<li key={blog.sys.id} style={{ paddingBottom: "0.5em" }}>
-							<Typography variant="h7" sx={{ fontWeight: 600, color: theme.palette.primary.main }}>
+							<Typography variant="h6" sx={{ fontWeight: 100, color: theme.palette.primary.main }}>
 								<Link href={`/blog/${blog.slug}`} passHref>
 									<a>
 										<u>{blog.title}</u>
