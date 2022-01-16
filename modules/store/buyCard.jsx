@@ -35,7 +35,7 @@ export default function BuyCard({ name, id, type, price, isLogged, setCartItems 
 				</Grid>
 				<Grid item xs={5} style={{ textAlign: "center" }}>
 					<div style={{ transform: "translateY(1em)" }}>
-						<Image src={SpeechBubble} width={150} height={100} />
+						<Image src={SpeechBubble} width={150} height={100} alt="Speech bubble" />
 					</div>
 					<Box
 						sx={{

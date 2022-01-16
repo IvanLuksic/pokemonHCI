@@ -10,6 +10,7 @@ import React, { useState, useEffect } from "react"
 import "../modules/helpers/firebase"
 import firebase from "firebase/compat/app"
 import "firebase/compat/auth"
+import { route } from "next/dist/server/router"
 
 // Kreiranje teme i wrappanje komponenti da su primary(TR plava) i secondary(TR žuta)
 // boje dostupni i primjenjeni u mui kroz cijeli projekt.
@@ -39,14 +40,28 @@ function MyApp({ Component, pageProps }) {
 		return () => unregisterAuthObserver() // Make sure we un-register Firebase observers when the component unmounts.
 	}, [])
 
+	function getTitle() {
+		if (router.pathname == "/") {
+			return "Home"
+		} else {
+			return (
+				router.asPath.split("/")[router.asPath.split("/").length - 1].charAt(0).toUpperCase() +
+				router.asPath.split("/")[router.asPath.split("/").length - 1].substring(1)
+			)
+		}
+	}
+
 	return (
 		<ThemeProvider theme={theme}>
 			<Head>
-				<title>{router.pathname.charAt(1).toUpperCase() + router.pathname.substring(2)} | Team Rocket</title>
+				<title>{getTitle()} | Team Rocket</title>
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
 				<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"></link>
-				<meta property="og:title" content="My page title" key="title" />
+				<meta
+					name="description"
+					content={`Team Rocket hosts pokedex of all generation 1 pokemon, blog and NFT purchasing platform`}
+				/>
 			</Head>
 			<loginContext.Provider value={{ loginState, setLoginState }}>
 				<menuContext.Provider value={{ menuOpen, setMenuOpen }}>
@@ -63,4 +78,4 @@ function MyApp({ Component, pageProps }) {
 	)
 }
 
-export default MyApp;
+export default MyApp
