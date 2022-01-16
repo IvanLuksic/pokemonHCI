@@ -11,7 +11,7 @@ export default function AuthorCard({ name, surname, nickname, image, about }) {
 				item
 				xs
 				sx={{
-					width: { xs: "80%", sm: "50%", md: "70%" },
+					width: { xs: "60%", sm: "50%" },
 					aspectRatio: "1",
 					justifyContent: "center",
 					pb: "1.5em"
