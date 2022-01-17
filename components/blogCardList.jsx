@@ -3,7 +3,7 @@ import Link from "next/link"
 import React, { useState, useEffect } from "react"
 import BlogCard from "../modules/blog/blogCard"
 
-export default function BlogCardList({ searchResult }) {
+export default function BlogCardList({ posts }) {
 	const theme = useTheme()
 
 	const [windowWidth, setWindowWidth] = useState(undefined)
@@ -36,7 +36,7 @@ export default function BlogCardList({ searchResult }) {
 			alignItems="center"
 			sx={{ width: "100%", mt: "2em", mb: "2em" }}
 		>
-			{searchResult.map((blogCard) =>
+			{posts.map((blogCard) =>
 				windowWidth > theme.breakpoints.values.sm ? (
 					<Grid item xs={12} key={blogCard.sys.id} sx={{ mb: { xs: "1em", md: "2em" } }}>
 						<BlogCard {...blogCard} />
