@@ -21,6 +21,24 @@ class DataSourceAPI {
 		}
 	}
 
+	static async getHomeHero({ preview = false } = {}) {
+		const query = gql`
+			query getSlugs($preview: Boolean!) {
+				assetCollection(preview: $preview, where: { title: "Home hero image" }) {
+					image: items {
+						title
+						url
+					}
+				}
+			}
+		`
+
+		const variables = { preview }
+		const response = await this.queryContentful(query, variables)
+		const { image } = { ...response?.assetCollection }
+		return image[0]
+	}
+
 	static async getPosts({ preview = false } = {}) {
 		const query = gql`
 			query getPosts($preview: Boolean!) {
