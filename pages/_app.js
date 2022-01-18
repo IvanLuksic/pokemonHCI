@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }) {
 		} else {
 			return (
 				router.asPath.split("/")[router.asPath.split("/").length - 1].charAt(0).toUpperCase() +
-				router.asPath.split("/")[router.asPath.split("/").length - 1].substring(1)
+				router.asPath.split("/")[router.asPath.split("/").length - 1].substring(1).replace(/\%20/g, " ")
 			)
 		}
 	}
