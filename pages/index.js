@@ -10,7 +10,7 @@ import BlogCard from "../modules/blog/blogCard"
 export default function Home({ image, post }) {
 	return (
 		<div className="container">
-			<Grid container>
+			<Grid container id="back-to-top-anchor">
 				<HeroImage
 					{...image}
 					sxContainer={{
