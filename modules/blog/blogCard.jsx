@@ -26,7 +26,17 @@ export default function BlogCard({ title, summary, cardImage, author, slug }) {
 							</Typography>
 						</Link>
 					</Grid>
-					<Grid item xs md={1} sx={{ height: "100%", width: "100%", pb: { xs: "0.5em", md: "0em" } }}>
+					<Grid
+						item
+						xs
+						md={1}
+						sx={{
+							height: "100%",
+							width: "100%",
+							pb: { xs: "0.5em", md: "0em" },
+							pr: { xs: "0em", md: "1.5em" }
+						}}
+					>
 						<Typography variant="h6" sx={{ fontWeight: 100 }}>
 							{summary}
 						</Typography>
@@ -42,7 +52,7 @@ export default function BlogCard({ title, summary, cardImage, author, slug }) {
 						}}
 					>
 						<Link href={`/blog/${slug}`} passHref>
-							<Button variant="contained" sx={{ textAlign: "center" }}>
+							<Button variant="contained" sx={{ minHeight: "3em", textAlign: "center" }}>
 								Read more...
 							</Button>
 						</Link>
@@ -63,7 +73,10 @@ export default function BlogCard({ title, summary, cardImage, author, slug }) {
 					<AuthorImageWithName {...author} />
 					<Grid item md sx={{ display: "flex", alignItems: "flex-end", pt: "1em" }}>
 						<Link href={`/blog/${slug}`} passHref>
-							<Button variant="contained" sx={{ minWidth: "100%", textAlign: "center" }}>
+							<Button
+								variant="contained"
+								sx={{ minWidth: "100%", minHeight: "3.5em", textAlign: "center" }}
+							>
 								Read more...
 							</Button>
 						</Link>

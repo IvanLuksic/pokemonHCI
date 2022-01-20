@@ -26,9 +26,6 @@ export default function AuthorImage({ title, url }) {
 					width: "100%",
 					aspectRatio: "1",
 					position: "relative",
-					justifyContent: "center",
-					alignItems: "center",
-					textAlign: "center",
 					lineHeight: "500%"
 				}}
 			>
