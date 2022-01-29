@@ -1,7 +1,6 @@
 import { Grid } from "@mui/material"
 import ContentContainer from "../components/contentContainer"
 import HeroImage from "../modules/common/heroImage"
-import BlogCardList from "../components/blogCardList"
 import BuyPreview from "../modules/home/buyPreview"
 import PokedexPreview from "../modules/home/pokedexPreview"
 import DataSourceAPI from "../lib/DataSourceApi"

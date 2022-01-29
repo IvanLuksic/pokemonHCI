@@ -54,7 +54,14 @@ export default function Footer() {
 				<ul style={{ fontWeight: 700 }}>
 					{pages.map((page) => (
 						<li key={page} style={{ cursor: "pointer" }}>
-							<Link href={page == "Home" ? "/" : page.toLowerCase()} passHref>
+							<Link
+								href={
+									page == "Home"
+										? "/"
+										: page.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase())
+								}
+								passHref
+							>
 								{page}
 							</Link>
 						</li>
