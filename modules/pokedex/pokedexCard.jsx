@@ -4,7 +4,6 @@ import React from "react"
 import TypeToColor from "../../staticFiles/correspondingTypeColor.json"
 
 export default function PokedexCard({ name, id, type }) {
-	/*console.log( type + TypeToColor[type])*/
 	return (
 		<Paper
 			elevation={3}

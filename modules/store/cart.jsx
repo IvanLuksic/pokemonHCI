@@ -8,10 +8,6 @@ export default function Cart({ cartItems, setCartItems }) {
 		setCartItems((old) => old.filter((item) => item.id != handleDelete))
 	}, [handleDelete])
 
-	useEffect(() => {
-		console.log(cartItems)
-	}, [cartItems])
-
 	return (
 		<Grid
 			item
