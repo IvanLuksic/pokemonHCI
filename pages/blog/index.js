@@ -16,7 +16,6 @@ export default function BlogPosts({ postCards }) {
 					<PageHeading heading={"Blog"} subheading={"Find what is interesting for you"} xs={11} />
 					<Grid item xs={11}>
 						<Search searchType="blog" setSearchResult={setSearchResult} searchPool={postCards} />
-						{console.log(searchResult)}
 					</Grid>
 					<Grid item xs={11}>
 						<BlogCardList posts={searchResult} />
