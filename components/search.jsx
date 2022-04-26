@@ -49,7 +49,9 @@ export default function Search({ autocompleteList, setSearchResult, chipList, se
 						(value) =>
 							value.title.toUpperCase().includes(searchValue.toUpperCase()) ||
 							value.summary.toUpperCase().includes(searchValue.toUpperCase()) ||
-							value.author.nickname.toUpperCase().includes(searchValue.toUpperCase())
+							value.author.name ? value.author.name.toUpperCase().includes(searchValue.toUpperCase()) : null ||
+							value.author.nickname ? value.author.nickname.toUpperCase().includes(searchValue.toUpperCase()) : null ||
+							value.author.surname ? value.author.surname.toUpperCase().includes(searchValue.toUpperCase()) : null
 					)
 					.map((value) => value)
 			)
